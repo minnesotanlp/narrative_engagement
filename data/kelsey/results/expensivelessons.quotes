@@ -1,0 +1,34 @@
+quote_start	quote_end	mention_start	mention_end	mention_phrase	char_id	quote
+37	42	43	43	he	1	“ It ’s awful , ”
+70	95	43	43	he	1	“ It ’s awful ! Without languages I ’m like a bird without wings . I might just as well give up the work . ”
+154	159	161	161	Vorotov	1	“ Ask her in , ”
+205	212	214	214	Vorotov	1	“ Delighted ! Please sit down , ”
+250	270	272	272	he	1	“ It was Pyotr Sergeitch sent you ? Yes , yes ... I asked him about it . Delighted ! ”
+443	449	451	451	Vorotov	1	“ So , Alice Osipovna , ”
+453	495	451	451	Vorotov	1	“ we ’ll have a lesson every evening from seven to eight . As regards your terms — a rouble a lesson — I’ve nothing to say against that . By all means let it be a rouble . . . . ”
+675	691	692	692	he	1	“ It ’s very pleasant to see a girl working to earn her own living , ”
+695	739	692	692	he	1	“ On the other hand , it ’s very unpleasant to think that poverty should not spare such elegant and pretty girls asAlice Osipovna , and that she , too , should have to struggle for existence . It ’s a sad thing ! ”
+818	838	807	807	she	4	“ French grammar has twenty - six letters . The first letter is called A , the second B ... ”
+839	843	844	844	Vorotov	1	“ Excuse me , ”
+849	902	904	904	he	1	“ I must warn you , mademoiselle , that you must change your method a little in my case . You see , I know Russian , Greek , and Latin well .... I’ve studied comparative philology , and I think we might omit Margot and pass straight to reading some author . ”
+918	924	925	925	he	1	“ A friend of mine , ”
+928	990	925	925	he	1	“ wanting to learn modern languages , laid before him the French , German , and Latin gospels , and read them side by side , carefully analysing each word , and would you believe it , he attained his object in less than a year . Let us do the same . We ’ll take some author and read him . ”
+1064	1069	1054	1054	she	28	“ As you please . ”
+1085	1090	1054	1054	she	28	“ Will this do ? ”
+1091	1098	1099	1099	she	28	“ It ’s all the same , ”
+1102	1126	1099	1099	she	28	“ In that case let us begin , and good luck to it ! Let ’s begin with the title ... ‘Mémoires . ’ ”
+1127	1130	1131	1131	Mdlle	4	“ Reminiscences , ”
+1156	1159	1146	1146	he	1	“ Mémoires , ”
+1220	1255	1201	1201	Vorotov	1	“ Her hair is n’t naturally curly ; she curls it . It ’s a strange thing ! She works from morning to night , and yet she has time to curl her hair . ”
+1270	1276	1260	1260	she	33	“ Au revoir , monsieur , ”
+1408	1427	1381	1381	he	1	“ Excuse me , Alice Osipovna , but I ought to tell you ... I’m under painful necessity ... ”
+1510	1517	1518	1518	he	1	“ I ought to tell you , ”
+1543	1557	1531	1531	he	1	“ Excuse me , I ... I must leave you for ten minutes . ”
+1972	1988	1945	1945	she	2	“ ‘ He was walking the street and meeting a gentleman his friend and saying , “
+2004	2006	1945	1945	she	2	” ’ ”
+2008	2010	1945	1945	she	2	“ Mémoires ”
+2422	2428	2418	2418	she	37	“ Au revoir , monsieur , ”
+2572	2588	2569	2569	his	1	“ You are dear to me ! I ... I love you!Allow me to speak . ”
+2630	2649	2623	2623	she	2	“ Ach , you must n’t ! Do n’t speak , I entreat you ! You must n’t ! ”
+2748	2775	2735	2735	she	2	“ ‘ Oh , young gentleman , do n’t tear those flowers in my garden which I want to be giving to my ill daughter .... ’ ”
+2798	2801	2735	2735	she	2	“ Mémoires , ”
