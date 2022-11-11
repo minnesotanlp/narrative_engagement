@@ -131,3 +131,4 @@ dmypy.json
 
 .DS_Store
 .vscode
+narrative_eye_tracking_analysis/narrative_engagement.code-workspace

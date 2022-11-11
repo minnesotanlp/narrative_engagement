@@ -28,4 +28,10 @@ git subtree add --prefix eyetracking_style eyetracking_style main --squash
 git subtree add --prefix narrative_eye_tracking_analysis/ narrative_eye_tracking_analysis/main --squash
 ```
 
-3. 
+3. Pull changes from subtree
+
+```
+git subtree pull --prefix=narrative_eye_tracking_analysis narrative_eye_tracking_analysis main
+```
+
+[More commands](https://www.atlassian.com/git/tutorials/git-subtree)
