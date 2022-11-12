@@ -10,6 +10,11 @@ matplotlib = "*"
 mpld3 = "*"
 numpy = "*"
 statistics = "*"
+transformers = "*"
+torch = "*"
+seaborn = "*"
+nltk = "*"
+sklearn = "*"
 
 [dev-packages]
 ipykernel = "*"
