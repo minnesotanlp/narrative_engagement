@@ -1,0 +1,52 @@
+---
+title: "Eyetracking analysis for Narrative Engagement"
+date: "2022-11-15"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Import packages
+
+
+```{r}
+install.packages(c("eyetrackingR", "eyelinker", "lme4", 'VWPre', 'optimx'))
+library(eyetrackingR)
+library(VWPre)
+library(lme4)
+library(optimx)
+```
+
+## Import Eyelink Data
+
+
+```{r}
+data <- read.table('./narrative_eye_tracking_analysis/results/id2_el.csv', sep=",", header = TRUE, quote="", fill = TRUE)
+```
+
+## Get highlight categories
+
+```{r}
+data_none <- data[data$category == 0,]
+data_present <- data[data$category == 1,]
+data_confused <- data[data$category == 2,]
+data_curious <- data[data$category == 3,]
+data_connected <- data[data$category == 4,]
+data_other <- data[data$category == 5,]
+```
+
+# Running all models
+
+```{r}
+measures <- names(data)[c(12, 13, 14, 15, 16)]
+datatypes <- list("data_none", "data_present", "data_confused", "data_curious", "data_connected", "data_other")
+for (measure in measures){
+  for (datatype in datatypes){
+    model <- lmer(measure ~ 1 + HAL_FREQ + (1 | RECORDING_SESSION_LABEL) + (1 | word))
+    print(measure)
+    print(datatype)
+  }
+}
+```

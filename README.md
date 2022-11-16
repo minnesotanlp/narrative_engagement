@@ -5,7 +5,7 @@ This repo has the following repos as subtrees:
 
 - [Discourse feature extraction](https://github.com/minnesotanlp/emotional_story_arcs)
 - [Eye tracking and statistical analysis](https://github.com/minnesotanlp/eyetracking_style)
-- [Eye tracking and highlight data wrangling](https://github.com/minnesotanlp/narrative_eye_tracking_analysis)
+- [Eye tracking and highlight data wrangling](https://github.com/minnesotanlp/narrative_eye_tracking_analysis)(archived, now lives in this repo)
 - [Narrative transportation project from Spring '22](https://github.com/kelseyneis/narrative_transportation)
 
 ## fetching and pushing to subtree repos
@@ -29,7 +29,7 @@ git subtree add --prefix eyetracking_style eyetracking_style main --squash
 3. Pull changes from subtree
 
 ```
-git subtree pull --prefix=eyetracking_style eyetracking_style main
+git subtree pull --prefix=eyetracking_style eyetracking_style main --squash
 ```
 
 [More commands](https://www.atlassian.com/git/tutorials/git-subtree)
