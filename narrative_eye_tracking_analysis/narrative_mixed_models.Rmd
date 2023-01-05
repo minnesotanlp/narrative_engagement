@@ -1,0 +1,31 @@
+---
+title: "Narrative mixed models"
+output: html_document
+date: "2023-01-05"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r load_session}
+load("1213session")
+#write.csv(all_d, "./results_combined.csv")
+```
+
+```{r echo=FALSE}
+all_data_continuous <- read_csv("./combined_with_percent_highlighted.csv")
+```
+
+```{r}
+model_continuous = lmer(percent_highlighted ~ 1 + word + sadness + joy + concreteness + neutral + anger + neutral.1 + norm_dt + IA_REGRESSION_PATH_DURATION + IA_AVERAGE_FIX_PUPIL_SIZE + (1 | RECORDING_SESSION_LABEL) + (1 | story), data=all_data_continuous)
+```
+
+```{r}
+summary(model_continuous)
+```
+
+```{r}
+coef(model_continuous)
+```
