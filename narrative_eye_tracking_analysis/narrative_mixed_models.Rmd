@@ -15,17 +15,20 @@ load("1213session")
 ```
 
 ```{r echo=FALSE}
+library('readr')
 all_data_continuous <- read_csv("./combined_with_percent_highlighted.csv")
 ```
 
 ```{r}
 model_continuous = lmer(percent_highlighted ~ 1 + word + sadness + joy + concreteness + neutral + anger + neutral.1 + norm_dt + IA_REGRESSION_PATH_DURATION + IA_AVERAGE_FIX_PUPIL_SIZE + (1 | RECORDING_SESSION_LABEL) + (1 | story), data=all_data_continuous)
+model_rq1 = lmer(engagement_score ~ 1 + word + sadness + joy + concreteness + neutral + anger + neutral.1 + norm_dt + (1 | RECORDING_SESSION_LABEL) + (1 | story), data=all_d)
+model_valence = lmer(engagement_score ~ 1 + word + valence_avg + norm_dt + (1 | RECORDING_SESSION_LABEL) + (1 | story), data=all_data_continuous)
 ```
 
 ```{r}
-summary(model_continuous)
+summary(model_valence)
 ```
 
 ```{r}
-coef(model_continuous)
+coef(model_rq1)
 ```
