@@ -16,19 +16,38 @@ load("1213session")
 
 ```{r echo=FALSE}
 library('readr')
+library(MuMIn)
 all_data_continuous <- read_csv("./combined_with_percent_highlighted.csv")
+normalize_col <- function(x){(x-min(x))/(max(x)-min(x))}
+
+all_data_continuous$word_norm <- normalize_col(all_data_continuous$word)
+all_data_continuous$norm_dt = all_data_continuous$IA_DWELL_TIME_SMOOTHED / all_data_continuous$word
+all_data_continuous$norm_dt_scaled <- normalize_col(all_data_continuous$norm_dt)
 ```
 
 ```{r}
-model_continuous = lmer(percent_highlighted ~ 1 + word + sadness + joy + concreteness + neutral + anger + neutral.1 + norm_dt + IA_REGRESSION_PATH_DURATION + IA_AVERAGE_FIX_PUPIL_SIZE + (1 | RECORDING_SESSION_LABEL) + (1 | story), data=all_data_continuous)
-model_rq1 = lmer(engagement_score ~ 1 + word + sadness + joy + concreteness + neutral + anger + neutral.1 + norm_dt + (1 | RECORDING_SESSION_LABEL) + (1 | story), data=all_d)
-model_valence = lmer(engagement_score ~ 1 + word + valence_avg + norm_dt + (1 | RECORDING_SESSION_LABEL) + (1 | story), data=all_data_continuous)
+#model_continuous = lmer(percent_highlighted ~ 1 + word_norm + sadness + joy + concreteness + neutral + anger + neutral.1 + valence_avg + norm_dt_scaled + (1 | RECORDING_SESSION_LABEL) , data=all_data_continuous)
+model_continuous = lmer(proportion_x ~ 1 + word_norm + norm_dt_scaled + (1 | RECORDING_SESSION_LABEL) , data=all_data_continuous)
+model_gaze = lmer(IA_DWELL_TIME_SMOOTHED ~ 1 + word_norm + valence_avg_x + proportion_x + (1 | RECORDING_SESSION_LABEL) + (1 | story), data=all_data_continuous)
+#model_rq1 = lmer(engagement_score ~ 1 + word + sadness + joy + concreteness + neutral + anger + neutral.1 + norm_dt + (1 | RECORDING_SESSION_LABEL) + (1 | story), data=all_d)
+model_valence = lmer(engagement_score ~ 1 + word_norm + valence_avg_x + norm_dt_scaled + (1 | RECORDING_SESSION_LABEL) + (1 | story), data=all_data_continuous)
+```
+```{r}
+filtered_df <- subset(all_data_continuous, all_data_continuous$category > 0)
+boxplot(valence_min_x ~ category,
+col=c("white","lightgray"), all_data_continuous)
+```
+```{r}
+summary(model_gaze)
 ```
 
 ```{r}
-summary(model_valence)
+print('variance explained by fixed variables and by both fixed and random variables')
+r.squaredGLMM(model_gaze)
+coef(model_gaze)
 ```
-
 ```{r}
-coef(model_rq1)
+library(ggplot2)
+#ggplot(all_data_continuous ,aes(x=norm_dt_scaled,y=proportion, colour=RECORDING_SESSION_LABEL)) + geom_point() 
+ggplot(all_data_continuous ,aes(x=valence_avg_x, y=proportion_x)) + geom_point() + facet_wrap(~RECORDING_SESSION_LABEL, nrow = 4, ncol = 6)
 ```
