@@ -28,7 +28,7 @@ all_data_continuous$norm_dt_scaled <- normalize_col(all_data_continuous$norm_dt)
 ```{r}
 #model_continuous = lmer(percent_highlighted ~ 1 + word_norm + sadness + joy + concreteness + neutral + anger + neutral.1 + valence_avg + norm_dt_scaled + (1 | RECORDING_SESSION_LABEL) , data=all_data_continuous)
 model_continuous = lmer(proportion_x ~ 1 + word_norm + norm_dt_scaled + (1 | RECORDING_SESSION_LABEL) , data=all_data_continuous)
-model_gaze = lmer(IA_DWELL_TIME_SMOOTHED ~ 1 + word_norm + valence_avg_x + proportion_x + (1 | RECORDING_SESSION_LABEL) + (1 | story), data=all_data_continuous)
+model_gaze = lmer(norm_dt ~ 1 + word_norm + valence_avg_x + proportion_x + (1 | RECORDING_SESSION_LABEL) + (1 | story), data=all_data_continuous)
 #model_rq1 = lmer(engagement_score ~ 1 + word + sadness + joy + concreteness + neutral + anger + neutral.1 + norm_dt + (1 | RECORDING_SESSION_LABEL) + (1 | story), data=all_d)
 model_valence = lmer(engagement_score ~ 1 + word_norm + valence_avg_x + norm_dt_scaled + (1 | RECORDING_SESSION_LABEL) + (1 | story), data=all_data_continuous)
 ```
