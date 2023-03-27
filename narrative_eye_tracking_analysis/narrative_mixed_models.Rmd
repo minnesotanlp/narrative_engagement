@@ -1,6 +1,8 @@
 ---
 title: "Narrative mixed models"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 date: "2023-01-05"
 ---
 
@@ -11,43 +13,72 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r load_session}
 load("1213session")
-#write.csv(all_d, "./results_combined.csv")
 ```
 
 ```{r echo=FALSE}
 library('readr')
 library(MuMIn)
+library(VWPre)
+library(lme4)
+library(optimx)
+library(MuMIn)
+library(lmerTest)
 all_data_continuous <- read_csv("./combined_with_percent_highlighted.csv")
-normalize_col <- function(x){(x-min(x))/(max(x)-min(x))}
-
+normalize_col <- function(x){(x-min(x, na.rm = TRUE))/(max(x, na.rm = TRUE)-min(x, na.rm = TRUE))}
 all_data_continuous$word_norm <- normalize_col(all_data_continuous$word)
 all_data_continuous$norm_dt = all_data_continuous$IA_DWELL_TIME_SMOOTHED / all_data_continuous$word
-all_data_continuous$norm_dt_scaled <- normalize_col(all_data_continuous$norm_dt)
+all_data_continuous <- all_data_continuous %>%
+    group_by(RECORDING_SESSION_LABEL) %>%
+    mutate(across(c(norm_dt), scales::rescale))
+all_data_continuous$norm_reg_path = all_data_continuous$IA_REGRESSION_PATH_DURATION_SMOOTHED / all_data_continuous$word
+all_data_continuous$highlight = ifelse(all_data_continuous$category == 0, 0, 1)
+all_data_continuous$valence_diff = all_data_continuous$valence_max_x - all_data_continuous$valence_min_x
+all_data_continuous$arousal_diff = all_data_continuous$arousal_max_x - all_data_continuous$arousal_min_x
 ```
 
 ```{r}
-#model_continuous = lmer(percent_highlighted ~ 1 + word_norm + sadness + joy + concreteness + neutral + anger + neutral.1 + valence_avg + norm_dt_scaled + (1 | RECORDING_SESSION_LABEL) , data=all_data_continuous)
-model_continuous = lmer(proportion_x ~ 1 + word_norm + norm_dt_scaled + (1 | RECORDING_SESSION_LABEL) , data=all_data_continuous)
-model_gaze = lmer(norm_dt ~ 1 + word_norm + valence_avg_x + proportion_x + (1 | RECORDING_SESSION_LABEL) + (1 | story), data=all_data_continuous)
-#model_rq1 = lmer(engagement_score ~ 1 + word + sadness + joy + concreteness + neutral + anger + neutral.1 + norm_dt + (1 | RECORDING_SESSION_LABEL) + (1 | story), data=all_d)
-model_valence = lmer(engagement_score ~ 1 + word_norm + valence_avg_x + norm_dt_scaled + (1 | RECORDING_SESSION_LABEL) + (1 | story), data=all_data_continuous)
+model_scaled_dt = lmer(proportion_x ~ 1 + word_norm +  positive + negative + concreteness + valence_diff + norm_dt + arousal_diff + (1 | RECORDING_SESSION_LABEL) + (1 | story), data=all_data_continuous)
+model_gaze = lmer(norm_dt ~ 1 + word_norm +  positive + negative + concreteness + valence_avg_x + arousal_avg_x + proportion_x + (1 | RECORDING_SESSION_LABEL) + (1 | story), data=all_data_continuous)
+model_gaze_normalized_dt = lmer(norm_dt ~ 1 + word_norm +  positive + negative + concreteness + valence_avg_x + arousal_avg_x + proportion_x + (1 | RECORDING_SESSION_LABEL) + (1 | story), data=all_data_continuous)
 ```
+
+## Predict continuous highlight annotation
+
+i.e. what proportion of the sentence is highlighted
+
 ```{r}
-filtered_df <- subset(all_data_continuous, all_data_continuous$category > 0)
-boxplot(valence_min_x ~ category,
-col=c("white","lightgray"), all_data_continuous)
+summary(model_scaled_dt)
+print('variance explained by fixed variables and by both fixed and random variables')
+r.squaredGLMM(model_scaled_dt)
+coef(model_scaled_dt)
 ```
+## Predict dwell time
 ```{r}
 summary(model_gaze)
-```
-
-```{r}
 print('variance explained by fixed variables and by both fixed and random variables')
 r.squaredGLMM(model_gaze)
 coef(model_gaze)
 ```
 ```{r}
+summary(model_gaze_normalized_dt)
+r.squaredGLMM(model_gaze_normalized_dt)
+```
+```{r}
+coef(model_gaze_normalized_dt)
+```
+
+```{r}
 library(ggplot2)
-#ggplot(all_data_continuous ,aes(x=norm_dt_scaled,y=proportion, colour=RECORDING_SESSION_LABEL)) + geom_point() 
-ggplot(all_data_continuous ,aes(x=valence_avg_x, y=proportion_x)) + geom_point() + facet_wrap(~RECORDING_SESSION_LABEL, nrow = 4, ncol = 6)
+ggplot(all_data_continuous ,aes(x=arousal_diff, y=proportion_x)) + geom_point() + facet_wrap(~RECORDING_SESSION_LABEL, nrow = 4, ncol = 6)
+data_frame_mod <- all_data_continuous[all_data_continuous$RECORDING_SESSION_LABEL == 'id11',]
+ggplot(all_data_continuous ,aes(x=valence_diff, y=norm_dt))+ geom_point()   + facet_wrap(~RECORDING_SESSION_LABEL, nrow = 4, ncol = 6)
+ggplot(all_data_continuous ,aes(x=norm_dt, y=proportion_x))+ geom_point()   + facet_wrap(~RECORDING_SESSION_LABEL, nrow = 4, ncol = 6)
+
+
+```
+
+```{r}
+#filtered_df <- subset(all_data_continuous, all_data_continuous$category > 0)
+boxplot(norm_dt ~ RECORDING_SESSION_LABEL,
+col=c("white","lightgray"), all_data_continuous)
 ```
