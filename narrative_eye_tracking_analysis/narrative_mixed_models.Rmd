@@ -34,11 +34,17 @@ all_data_continuous$norm_reg_path = all_data_continuous$IA_REGRESSION_PATH_DURAT
 all_data_continuous$highlight = ifelse(all_data_continuous$category == 0, 0, 1)
 all_data_continuous$valence_diff = all_data_continuous$valence_max_x - all_data_continuous$valence_min_x
 all_data_continuous$arousal_diff = all_data_continuous$arousal_max_x - all_data_continuous$arousal_min_x
+engagement_highlights <- read_csv("./engagement_highlights.csv")
+
+```
+```{r}
+all_data_continuous <- all_data_continuous %>%
+    group_by(RECORDING_SESSION_LABEL)
 ```
 
 ```{r}
 model_scaled_dt = lmer(proportion_x ~ 1 + word_norm +  positive + negative + concreteness + valence_diff + norm_dt + arousal_diff + (1 | RECORDING_SESSION_LABEL) + (1 | story), data=all_data_continuous)
-model_gaze = lmer(norm_dt ~ 1 + word_norm +  positive + negative + concreteness + valence_avg_x + arousal_avg_x + proportion_x + (1 | RECORDING_SESSION_LABEL) + (1 | story), data=all_data_continuous)
+model_gaze = lmer(norm_dt ~ 1 + word_norm +  positive + negative + concreteness + valence_diff + arousal_diff + proportion_x + (1 | RECORDING_SESSION_LABEL) + (1 | story), data=all_data_continuous)
 model_gaze_normalized_dt = lmer(norm_dt ~ 1 + word_norm +  positive + negative + concreteness + valence_avg_x + arousal_avg_x + proportion_x + (1 | RECORDING_SESSION_LABEL) + (1 | story), data=all_data_continuous)
 ```
 
@@ -69,11 +75,13 @@ coef(model_gaze_normalized_dt)
 
 ```{r}
 library(ggplot2)
-ggplot(all_data_continuous ,aes(x=arousal_diff, y=proportion_x)) + geom_point() + facet_wrap(~RECORDING_SESSION_LABEL, nrow = 4, ncol = 6)
-data_frame_mod <- all_data_continuous[all_data_continuous$RECORDING_SESSION_LABEL == 'id11',]
-ggplot(all_data_continuous ,aes(x=valence_diff, y=norm_dt))+ geom_point()   + facet_wrap(~RECORDING_SESSION_LABEL, nrow = 4, ncol = 6)
-ggplot(all_data_continuous ,aes(x=norm_dt, y=proportion_x))+ geom_point()   + facet_wrap(~RECORDING_SESSION_LABEL, nrow = 4, ncol = 6)
-
+ggplot(all_data_continuous ,aes(x=arousal_diff, y=proportion_x, color=story)) + geom_point(alpha = .5) + facet_wrap(~RECORDING_SESSION_LABEL, nrow = 4, ncol = 6)
+data_frame_mod <- engagement_highlights[engagement_highlights$story == 'SM',]
+ggplot(all_data_continuous ,aes(x=valence_diff, y=norm_dt, color=story))+ geom_point(alpha = .5)   + facet_wrap(~RECORDING_SESSION_LABEL, nrow = 4, ncol = 6)
+ggplot(all_data_continuous ,aes(x=norm_dt, y=proportion_x, color=story))+ geom_point(alpha = .5)   + facet_wrap(~RECORDING_SESSION_LABEL, nrow = 4, ncol = 6)
+ggplot(engagement_highlights, aes(x=engagement_score, y=highlighted, color=story)) + geom_point() +
+  geom_smooth(method=lm,  linetype="dashed",
+             color="darkred", fill="blue")
 
 ```
 
