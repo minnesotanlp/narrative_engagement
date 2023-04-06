@@ -97,10 +97,10 @@ options(repr.plot.width=1000, repr.plot.height=400)
 # graph of combined highlight proportion count per sentence where sentence is the x axis and the sum of proportion_x is the y axis
 # rename column 'Unnamed:\ 0' to 'sentence'
 #all_data_continuous <- all_data_continuous %>%
-#    rename('sentence' = 'Unnamed:\ 0')
+ #   rename('sentence' = 'Unnamed:\ 0')
 
 #all_data_continuous <- all_data_continuous %>%
-#    rename('text' = '0')
+ #  rename('text' = '0')
 
 all_data_continuous$no_highlight <- ifelse(all_data_continuous$category == 0, 1, 0)
 all_data_continuous$present <- ifelse(all_data_continuous$category == 1, 1, 0)
@@ -112,19 +112,27 @@ all_data_continuous$other <- ifelse(all_data_continuous$category == 5, 1, 0)
 el_story <- all_data_continuous[all_data_continuous$story == 'EL',]
 el_story <- el_story %>%
     group_by(story, sentence) %>%
-    summarise(sum_proportion_x = sum(proportion_x), negative= mean(negative), positive = mean(positive), valence_diff = mean(valence_diff), arousal_diff = mean(arousal_diff), avg_dt = mean(norm_dt), no_highlight = sum(no_highlight), present = sum(present), confused = sum(confused), curious = sum(curious), connected = sum(connected), other = sum(other), text=first(text))%>%
-    mutate(across(c(sum_proportion_x), scales::rescale))
+    summarise(sum_proportion_x = sum(proportion_x), negative= mean(negative), positive = mean(positive), valence_diff = mean(valence_diff), arousal_diff = mean(arousal_diff), avg_dt = sum(norm_dt), no_highlight = sum(no_highlight), present = sum(present), confused = sum(confused), curious = sum(curious), connected = sum(connected), other = sum(other), text=first(text))%>%
+    mutate(across(c(sum_proportion_x), scales::rescale))%>%
+    mutate(across(c(avg_dt), scales::rescale))%>%
+    mutate(across(c(present), scales::rescale))%>%
+    mutate(across(c(confused), scales::rescale))%>%
+    mutate(across(c(curious), scales::rescale))%>%
+    mutate(across(c(connected), scales::rescale))%>%
+    mutate(across(c(other), scales::rescale))
 
 sm_story <- all_data_continuous[all_data_continuous$story == 'SM',]
 sm_story <- sm_story %>%
     group_by(story, sentence) %>%
     summarise(sum_proportion_x = sum(proportion_x), negative= mean(negative), positive = mean(positive), valence_diff = mean(valence_diff), arousal_diff = mean(arousal_diff), avg_dt = mean(norm_dt))%>%
-    mutate(across(c(sum_proportion_x), scales::rescale))
+    mutate(across(c(sum_proportion_x), scales::rescale))%>%
+    mutate(across(c(avg_dt), scales::rescale))
 
 combined_stories <- all_data_continuous %>%
     group_by(sentence) %>%
     summarise(sum_proportion_x = sum(proportion_x), negative= mean(negative), positive = mean(positive), valence_diff = mean(valence_diff), arousal_diff = mean(arousal_diff), avg_dt = mean(norm_dt))%>%
-    mutate(across(c(sum_proportion_x), scales::rescale))
+    mutate(across(c(sum_proportion_x), scales::rescale))%>%
+    mutate(across(c(avg_dt), scales::rescale))
 ```
 histogram with sentence as x axis and sum of proportion_x as y axis with 40 bins with 'negative'  line overlaying it
 ```{r}
@@ -167,7 +175,7 @@ ggsave("el_highlights_dt.png", plot = highlights_features_plot, width = 10, heig
 ```
 ```{r}
 library(plotly)
-plot_ly(data=el_story, x = ~sentence, y = ~present, type = 'bar', name = 'present', hovertemplate=~paste(gsub('(.{1,45})(\\s|$)', '\\1\n', text), "Count:", present)) %>%
+p <- plot_ly(data=el_story, x = ~sentence, y = ~present, type = 'bar', name = 'present', hovertemplate=~paste(gsub('(.{1,45})(\\s|$)', '\\1\n', text), "Count:", present)) %>%
     add_trace(y = ~confused, name = 'confused', hovertemplate=~paste(gsub('(.{1,45})(\\s|$)', '\\1\n', text), "Count:", confused)) %>%
     add_trace(y = ~curious, name = 'curious', hovertemplate=~paste(gsub('(.{1,45})(\\s|$)', '\\1\n', text), "Count:", curious)) %>%
     add_trace(y = ~connected, name = 'connected', hovertemplate=~paste(gsub('(.{1,45})(\\s|$)', '\\1\n', text), "Count:", connected)) %>%
@@ -178,8 +186,30 @@ plot_ly(data=el_story, x = ~sentence, y = ~present, type = 'bar', name = 'presen
       family = "Sitka Small",
       size = 16,
       color = "white"),
-    widths = lcm(1)))
+    widths = lcm(1))) %>% add_markers()
 
+htmlwidgets::saveWidget(p, "highlights_el.html")
+
+```
+
+```{r}
+p <- plot_ly(data=el_story, x = ~sentence, y = ~present,  type = 'bar', name = 'present', hovertemplate=~paste(gsub('(.{1,45})(\\s|$)', '\\1\n', text), "Count:", present)) %>%
+    add_trace(y = ~confused, name = 'confused', hovertemplate=~paste(gsub('(.{1,45})(\\s|$)', '\\1\n', text), "Count:", confused)) %>%
+    add_trace(y = ~curious, name = 'curious', hovertemplate=~paste(gsub('(.{1,45})(\\s|$)', '\\1\n', text), "Count:", curious)) %>%
+    add_trace(y = ~connected, name = 'connected', hovertemplate=~paste(gsub('(.{1,45})(\\s|$)', '\\1\n', text), "Count:", connected)) %>%
+    add_trace(y = ~other, name = 'other', hovertemplate=~paste(gsub('(.{1,45})(\\s|$)', '\\1\n', text), "Count:", other)) %>%  
+    add_trace(y = ~negative, name = 'negative sentiment', type = 'scatter', mode = 'lines', hovertemplate=~paste(gsub('(.{1,45})(\\s|$)', '\\1\n', text), "Count:", other)) %>%
+
+    layout(
+      barmode = 'stack',
+    hoverlabel = list(
+    font = list(
+      family = "Sitka Small",
+      size = 16,
+      color = "white"),
+    widths = lcm(1))) %>% add_markers()
+
+htmlwidgets::saveWidget(p, "highlights_el.html")
 ```
 
 
