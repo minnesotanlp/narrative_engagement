@@ -1,0 +1,170 @@
+\begin{thebibliography}{24}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{ind()}]{indico2015}
+
+\newblock Exploring the shapes of stories using python and sentiment apis.
+\newblock \url{https://indicodata.ai/blog/plotlines/}.
+\newblock Accessed: 2022-12-21.
+
+\bibitem[{wil(2015)}]{willems_2015}
+ 2015.
+\newblock \href {https://doi.org/10.1017/CBO9781107323667} {\emph{Cognitive
+  Neuroscience of Natural Language Use}}.
+\newblock Cambridge University Press.
+
+\bibitem[{1 et~al.(2014)1, Warriner, and Kuperman}]{brysbaert2014}
+Marc~Brysbaert 1, Amy~Beth Warriner, and Victor Kuperman. 2014.
+\newblock \href {https://doi.org/10.3758/s13428-013-0403-5} {Concreteness
+  ratings for 40 thousand generally known english word lemmas}.
+\newblock \emph{Behavior Research Methods}, 46(3):904--911.
+
+\bibitem[{Andrade and Andersen(2020)}]{andrade2020}
+Stefan~Bastholm Andrade and Ditte Andersen. 2020.
+\newblock \href {https://doi.org/10.1080/13645579.2020.1723205} {Digital story
+  grammar: a quantitative methodology for narrative analysis}.
+\newblock \emph{International Journal of Social Research Methodology},
+  23(4):405--421.
+
+\bibitem[{Aryani et~al.(2013)Aryani, Conrad, and Jacobs}]{aryani2013}
+Arash Aryani, Markus Conrad, and Arthur Jacobs. 2013.
+\newblock \href {https://doi.org/10.3389/fpsyg.2013.00654} {Extracting salient
+  sublexical units from written texts: ``emophon,'' a corpus-based approach to
+  phonological iconicity}.
+\newblock \emph{Frontiers in Psychology}, 4.
+
+\bibitem[{Boyd et~al.(2022)Boyd, Ashokkumar, Seraj, and Pennebaker}]{liwc_22}
+Ryan Boyd, Ashwini Ashokkumar, Sarah Seraj, and James Pennebaker. 2022.
+\newblock \href {https://doi.org/10.13140/RG.2.2.23890.43205} {The development
+  and psychometric properties of liwc-22}.
+
+\bibitem[{Boyd et~al.(2020)Boyd, Blackburn, and
+  Pennebaker}]{boyd_blackburn_pennebaker_2020}
+Ryan~L. Boyd, Kate~G. Blackburn, and James~W. Pennebaker. 2020.
+\newblock \href {https://doi.org/10.1126/sciadv.aba2196} {The narrative arc:
+  Revealing core narrative structures through text analysis}.
+\newblock \emph{Science Advances}, 6(32).
+
+\bibitem[{Busselle and Bilandzic(2009)}]{busselle2009}
+Rick Busselle and Helena Bilandzic. 2009.
+\newblock \href {https://doi.org/10.1080/15213260903287259} {Measuring
+  narrative engagement}.
+\newblock \emph{Media Psychology}, 12(4):321--347.
+
+\bibitem[{Chung-fat yim et~al.(2019)Chung-fat yim, Cilento, Piotrowska, and
+  Mar}]{chung-fat-yim_cilento_piotrowska_mar_2019}
+Ashley Chung-fat yim, Elena Cilento, Ewelina Piotrowska, and Raymond~A. Mar.
+  2019.
+\newblock \href {https://doi.org/10.1017/langcog.2019.15} {Are stories just as
+  transporting when not in your native tongue?}
+\newblock \emph{Language and Cognition}, 11(2):285–309.
+
+\bibitem[{Consoli(2018)}]{Consoli2018}
+Gianluca Consoli. 2018.
+\newblock \href {https://doi.org/10.1007/s41809-018-0019-5} {Preliminary steps
+  towards a cognitive theory of fiction and its effects}.
+\newblock \emph{Journal of Cultural Cognitive Science}, 2:85–100.
+
+\bibitem[{Delatorre et~al.(2019)Delatorre, Salguero, Le{\'o}n, and
+  Tapscott}]{delatorre2019}
+Pablo Delatorre, Alberto Salguero, Carlos Le{\'o}n, and Alan Tapscott. 2019.
+\newblock \href {https://doi.org/10.3389/fpsyg.2019.01988} {The impact of
+  context on affective norms: A case of study with suspense}.
+\newblock \emph{Frontiers in Psychology}, 10.
+
+\bibitem[{Ferreira and
+  Gon{\c{c}}alo~Oliveira(2018)}]{ferreira-goncalo-oliveira-2018-seeking}
+Mariana Ferreira and Hugo Gon{\c{c}}alo~Oliveira. 2018.
+\newblock \href {https://doi.org/10.18653/v1/W18-6602} {Seeking the ideal
+  narrative model for computer-generated narratives}.
+\newblock In \emph{Proceedings of the 3rd Workshop on Computational Creativity
+  in Natural Language Generation ({CC}-{NLG} 2018)}, pages 5--10, Tilburg, the
+  Netherlands. Association for Computational Linguistics.
+
+\bibitem[{Green et~al.(2006)Green, Brock, and
+  Kaufman}]{green_brock_kaufman_2006}
+Melanie~C. Green, Timothy~C. Brock, and Geoff~F. Kaufman. 2006.
+\newblock \href {https://doi.org/10.1111/j.1468-2885.2004.tb00317.x}
+  {Understanding media enjoyment: The role of transportation into narrative
+  worlds}.
+\newblock \emph{Communication Theory}, 14(4):311–327.
+
+\bibitem[{Hsu et~al.(2015)Hsu, Jacobs, Citron, and Conrad}]{HSU201596}
+Chun-Ting Hsu, Arthur~M. Jacobs, Francesca~M.M. Citron, and Markus Conrad.
+  2015.
+\newblock \href {https://doi.org/https://doi.org/10.1016/j.bandl.2015.01.011}
+  {The emotion potential of words and passages in reading harry potter -- an
+  fmri study}.
+\newblock \emph{Brain and Language}, 142:96--114.
+
+\bibitem[{Jacobs(2017)}]{jacobs2017}
+Arthur~M. Jacobs. 2017.
+\newblock \href {https://doi.org/10.3389/fnhum.2017.00622} {Quantifying the
+  beauty of words: A neurocognitive poetics perspective}.
+\newblock \emph{Frontiers in Human Neuroscience}, 11.
+
+\bibitem[{Jacobs and Willems(2018)}]{jacobs2018}
+Arthur~M. Jacobs and Roel~M. Willems. 2018.
+\newblock \href {https://doi.org/10.1037/gpr0000106} {The fictive brain:
+  Neurocognitive correlates of engagement in literature}.
+\newblock \emph{Review of General Psychology}, 22(2):147--160.
+
+\bibitem[{Kasunic and Kaufman(2018)}]{kasunic_kaufman_2018}
+Anna Kasunic and Geoff Kaufman. 2018.
+\newblock \href {https://doi.org/10.18653/v1/w18-1501} {Learning to listen:
+  Critically considering the role of ai in human storytelling and character
+  creation}.
+\newblock \emph{Proceedings of the First Workshop on Storytelling}.
+
+\bibitem[{Kunze et~al.(2015)Kunze, Sanchez, Dingler, Augereau, Kise, Inami, and
+  Tsutomu}]{kunze2015}
+Kai Kunze, Susana Sanchez, Tilman Dingler, Olivier Augereau, Koichi Kise,
+  Masahiko Inami, and Terada Tsutomu. 2015.
+\newblock \href {https://doi.org/10.1145/2735711.2735814} {The augmented
+  narrative: Toward estimating reader engagement}.
+\newblock In \emph{Proceedings of the 6th Augmented Human International
+  Conference}, AH '15, page 163–164, New York, NY, USA. Association for
+  Computing Machinery.
+
+\bibitem[{Kuzmičová(2014)}]{kuzmicova2014}
+Anežka Kuzmičová. 2014.
+\newblock \href {http://www.jstor.org/stable/10.5325/style.48.3.275} {Literary
+  narrative and mental imagery: A view from embodied cognition}.
+\newblock \emph{Style}, 48(3):275--293.
+
+\bibitem[{Mak and Willems(2019)}]{mak2019}
+Marloes Mak and Roel~M. Willems. 2019.
+\newblock \href {https://doi.org/10.1080/23273798.2018.1552007} {Mental
+  simulation during literary reading: Individual differences revealed with
+  eye-tracking}.
+\newblock \emph{Language, Cognition and Neuroscience}, 34(4):511--535.
+
+\bibitem[{Maslej et~al.(2019)Maslej, Mar, and Kuperman}]{Maslej2019TheTF}
+Marta~M Maslej, Raymond~A. Mar, and Victor Kuperman. 2019.
+\newblock The textual features of fiction that appeal to readers: Emotion and
+  abstractness.
+\newblock \emph{Psychology of Aesthetics, Creativity, and the Arts}.
+
+\bibitem[{Melanie C.~Green(2004)}]{Green2004}
+Geoff F.~Kaufman Melanie C.~Green, Timothy C.~Brock. 2004.
+\newblock \href {https://doi.org/10.1111/j.1468-2885.2004.tb00317.x}
+  {Understanding media enjoyment: The role of transportation into narrative
+  worlds}.
+\newblock \emph{Communication Theory}, 14(4):311--327.
+
+\bibitem[{Rashkin et~al.(2016)Rashkin, Singh, and
+  Choi}]{rashkin-etal-2016-connotation}
+Hannah Rashkin, Sameer Singh, and Yejin Choi. 2016.
+\newblock \href {https://doi.org/10.18653/v1/P16-1030} {Connotation frames: A
+  data-driven investigation}.
+\newblock In \emph{Proceedings of the 54th Annual Meeting of the Association
+  for Computational Linguistics (Volume 1: Long Papers)}, pages 311--321,
+  Berlin, Germany. Association for Computational Linguistics.
+
+\bibitem[{Stockwell(2002)}]{stockwell2002cognitive}
+P.~Stockwell. 2002.
+\newblock \href {https://books.google.com/books?id=3-vBCWC\_hOcC}
+  {\emph{Cognitive Poetics: An Introduction}}.
+\newblock Routledge.
+
+\end{thebibliography}

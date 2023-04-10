@@ -1,0 +1,166 @@
+% This must be in the first 5 lines to tell arXiv to use pdfLaTeX, which is strongly recommended.
+\pdfoutput=1
+% In particular, the hyperref package requires pdfLaTeX in order to break URLs across lines.
+
+\documentclass[11pt]{article}
+
+% Remove the "review" option to generate the final version.
+\usepackage{acl}
+
+% Standard package includes
+\usepackage{times}
+\usepackage{latexsym}
+
+% For proper rendering and hyphenation of words containing Latin characters (including in bib files)
+\usepackage[T1]{fontenc}
+% For Vietnamese characters
+% \usepackage[T5]{fontenc}
+% See https://www.latex-project.org/help/documentation/encguide.pdf for other character sets
+
+% This assumes your files are encoded as UTF8
+\usepackage[utf8]{inputenc}
+
+% This is not strictly necessary, and may be commented out,
+% but it will improve the layout of the manuscript,
+% and will typically save some space.
+\usepackage{microtype}
+
+% If the title and author information does not fit in the area allocated, uncomment the following
+%
+%\setlength\titlebox{<dim>}
+%
+% and set <dim> to something 5cm or larger.
+
+\title{Instructions for *ACL Proceedings}
+
+% Author information can be set in various styles:
+% For several authors from the same institution:
+% \author{Author 1 \and ... \and Author n \\
+%         Address line \\ ... \\ Address line}
+% if the names do not fit well on one line use
+%         Author 1 \\ {\bf Author 2} \\ ... \\ {\bf Author n} \\
+% For authors from different institutions:
+% \author{Author 1 \\ Address line \\  ... \\ Address line
+%         \And  ... \And
+%         Author n \\ Address line \\ ... \\ Address line}
+% To start a seperate ``row'' of authors use \AND, as in
+% \author{Author 1 \\ Address line \\  ... \\ Address line
+%         \AND
+%         Author 2 \\ Address line \\ ... \\ Address line \And
+%         Author 3 \\ Address line \\ ... \\ Address line}
+
+\author{First Author \\
+  Affiliation / Address line 1 \\
+  Affiliation / Address line 2 \\
+  Affiliation / Address line 3 \\
+  \texttt{email@domain} \\\And
+  Second Author \\
+  Affiliation / Address line 1 \\
+  Affiliation / Address line 2 \\
+  Affiliation / Address line 3 \\
+  \texttt{email@domain} \\}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Capturing readers' engagement in fiction is a challenging but important aspect of narrative understanding. In this study, we collected 23 readers’ reactions to 2 short stories through eye tracking, sentence-level annotations, and an overall engagement scale survey. Our aim is to analyze the significance of various qualities of the text in predicting how engaging a reader is likely to find it. As enjoyment of fiction is highly contextual, we will also investigate individual differences in our data. Furthering our understanding of what captivates readers in fiction will help better inform models used in creative narrative generation and collaborative writing tools.
+
+\end{abstract}
+
+\section{Introduction}
+
+The question of reader engagement in fiction has been studied in the psychology field for decades, with some of the foundational theoretical work from Iser (citation needed) and Gerrig paving the way for more recent theoretical frameworks and experimental setups, which started in the early 2000s with the work by Green (citation) in the field of Media Psychology. In the past ten years, this question has been picked up in more fields, such as cognitive science, psycholinguistics, and computational narrative understanding.
+
+However, as Jacobs emphasized (2018), the samples normally collected are small and not enough to compensate for individual differences in reading patterns due to reader context, among other factors. In order to help close the experimental gap, one contribution of this study is to provide the computational community with a data set of reader reactions to literary short fiction, which Jacobs refers to as "hot" experimental research. This is opposed to setups in which the stories are contrived for the purpose of the study.
+
+Taking inspiration from 
+
+\section{Related Research}
+
+[See Table 1 for comparison matrix. Brief description of other experimental setups and conclusions]
+
+\begin{table*}[t]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+& \textbf{Ours} & \textbf{Kunz et al.} & \textbf{Mangen et al.} & \textbf{Hsu et al.} & \textbf{Mak et al.} & \textbf{Maslej et al.} \\
+\hline
+\multicolumn{7}{|l|}{\textbf{Data gathered}}\\\hline
+Eye tracking & x & x & x &  & x &  \\\hline
+Saccade angle &  & x & x &  &  & \\\hline
+fMRI &  &  &  & x &  & \\\hline
+Engagement survey & x & x & x &  & x & x\\\hline
+Engagement annotation & x &  &  & x &  & \\\hline
+\multicolumn{7}{|l|}{\textbf{Textual features extracted}}\\\hline
+Emotional arc & x &  &  &  &  & \\\hline
+Lexical categories & x &  &  & x &  & x\\\hline
+Description category &  &  & x &  &  & \\\hline
+
+\end{tabular}
+\caption{Comparison between our study and other similar experiments.}
+\label{tab:accents}
+\end{table*}
+
+\section{Research questions}
+
+\subsection{RQ1: Does absorption in a story lead to longer gaze durations?}
+
+Subquestion: do “Present” highlights (i.e. transported) correlate with faster reading and “Connected” and “Curious” highlights with slower reading as the Jacobs model hypothesized?
+
+\subsection{RQ2: Does gaze duration increase in foregrounding passages and decrease in backgrounding passages?}
+
+Subquestion: is absorption greater in foregrounding passages?
+
+\subsection{RQ3: How much is engagement dependent on reader context vs. linguistic (discourse) features?}
+
+What are the overlapping cases (sentences) when those two sets of features agree? What are the diverging cases? Can discourse features be used as a proxy for predicting eye-tracking features?
+
+\subsection{RQ4: Are eye-tracking patterns consistent across users?}
+
+If they are consistent, can we build a model using all of the users’ data to predict the engagement label or their future time-series data? If not, can we build separate models for each user? Analyses on diverging cases between the users: why are they diverging? Perhaps based on background, personal experience, interests, etc.
+
+\subsection{RQ5: Is there a correlation between a sentence having low average word valence and reader’s absorption?}
+
+\subsection{RQ6: Can we predict whether a reader enjoyed the story overall based on eye-tracking data alone?}
+
+\section{Methods}
+
+\subsection{Participant study}
+
+[Description of the eye tracking setup, number of participants - with the breakdown of age and gender, survey, and description of highlighting exercise]
+
+\subsection{Linguistic and discourse features}
+
+[LIWC, concreteness, emotional arc, emotion category, surprisal ... ]
+
+\section{Limitations}
+
+[caveat about quality of data and extent of manual drift corrections needed, number of participants, experiment setup getting in the way of genuine absorption, how we filled null values and proportion of sentences with missing data, how many trials were thrown out (6) ..]
+
+\section{Results}
+
+[description of mixed model setup with some results]
+
+\section{Conclusion}
+
+
+\subsection{References}
+
+\nocite{Green2004,liwc_22,kuzmicova2014,brysbaert2014,chung-fat-yim_cilento_piotrowska_mar_2019,Maslej2019TheTF,boyd_blackburn_pennebaker_2020,green_brock_kaufman_2006,kasunic_kaufman_2018,Consoli2018,busselle2009,jacobs2018,jacobs2017,stockwell2002cognitive,HSU201596,willems_2015,mak2019,kunze2015,ferreira-goncalo-oliveira-2018-seeking,rashkin-etal-2016-connotation,aryani2013,delatorre2019,andrade2020,indico2015}
+
+\bibliographystyle{acl_natbib}
+\bibliography{anthology,custom}
+
+
+\section*{Acknowledgements}
+
+[Text Group for initial feedback on experiment setup, Blue Lantern Writing Group for additional feedback]
+
+\appendix
+
+\section{Example Appendix}
+\label{sec:appendix}
+
+[more details on experiment: exact questions asked and instructions? some considerations for future eye tracking studies, such as use mount and make sure text is more spaced out]
+
+\end{document}
