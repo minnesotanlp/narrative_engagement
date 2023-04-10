@@ -73,7 +73,7 @@ The question of reader engagement in fiction has been studied in the psychology 
 
 However, as Jacobs emphasized (2018), the samples normally collected are small and not enough to compensate for individual differences in reading patterns due to reader context, among other factors. In order to help close the experimental gap, one contribution of this study is to provide the computational community with a data set of reader reactions to literary short fiction, which Jacobs refers to as "hot" experimental research. This is opposed to setups in which the stories are contrived for the purpose of the study.
 
-Taking inspiration from 
+Green's 2006 study narrowed down the salient aspects of reader engagement to create narrative engagement scale, which we have modified slightly to gage overall interest in the story. In addition, in order to obtain more granular information, we used these aspects to design an annotation task that would provide sentence-level feedback.
 
 \section{Related Research}
 
@@ -129,6 +129,16 @@ If they are consistent, can we build a model using all of the users’ data to p
 
 [Description of the eye tracking setup, number of participants - with the breakdown of age and gender, survey, and description of highlighting exercise]
 
+Participants were asked to read two short stories by Anton Chekhov while their eyes were tracked, and then answer an engagement scale survey. After the first page, there were a couple free form questions to gage initial impressions. (Include eye tracker details here from consent form) After reading through both stories, they completed a highlighting exercise where they highlighted areas according to the following categories:
+
+\begin{itemize}
+  \item Present: Able to vividly picture the scene in the story
+  \item Confused
+  \item Curious: Curious about what will happen next
+  \item Connected: Connected to the character; able to identify with them or feel their emotions
+  \item Other: Enjoyed it for a different reason
+\end{itemize}
+
 \subsection{Linguistic and discourse features}
 
 [LIWC, concreteness, emotional arc, emotion category, surprisal ... ]
@@ -140,7 +150,9 @@ If they are consistent, can we build a model using all of the users’ data to p
 \section{Results}
 
 [description of mixed model setup with some results]
+"valence (the pleasantness of a stimulus), arousal (the intensity of emotion provoked by a stimulus)" (from norms of valence, arousal, dominance paper)
 
+Other studies have shown that valence and arousal play an important role in predicting interest in a story (Maslej, Jacobs 2015, HSU201596) and Jacobs emphasized the importance of affective and emotional processes. Our results support a slight significance of valence mean and arousal mean of a sentence and a higher significance of valence-span - the difference between valence max and valence min and arousal-span - the difference between arousal max and arousal min, similar to Hsu (2015).
 \section{Conclusion}
 
 

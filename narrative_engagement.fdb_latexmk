@@ -1,20 +1,21 @@
 # Fdb version 3
-["bibtex narrative_engagement"] 1681084357 "narrative_engagement.aux" "narrative_engagement.bbl" "narrative_engagement" 1681084813
+["bibtex narrative_engagement"] 1681088324 "narrative_engagement.aux" "narrative_engagement.bbl" "narrative_engagement" 1681088328
   "./acl_natbib.bst" 1681081217 46515 00ea04ac076a39757781b946e66af096 ""
   "anthology.bib" 1681080958 42115314 2ae2be191b0e9b07c5cfc91a2babb9fe ""
   "custom.bib" 1681082070 14924 256a0b70a6d15cf17ee61621875d674f ""
-  "narrative_engagement.aux" 1681084813 3466 50ca7a458372e8fb080db3d239e1ff48 "pdflatex"
+  "narrative_engagement.aux" 1681088328 3466 3787fcd69205ffe21bd402c3ffc6f893 "pdflatex"
   (generated)
   "narrative_engagement.bbl"
   "narrative_engagement.blg"
-["pdflatex"] 1681084812 "/Users/neis/repos/school/narrative_engagement/narrative_engagement.tex" "narrative_engagement.pdf" "narrative_engagement" 1681084813
-  "/Users/neis/repos/school/narrative_engagement/narrative_engagement.tex" 1681084812 7976 d6cc3f82a2df4f077051bd8aac967963 ""
+["pdflatex"] 1681088327 "/Users/neis/repos/school/narrative_engagement/narrative_engagement.tex" "narrative_engagement.pdf" "narrative_engagement" 1681088328
+  "/Users/neis/repos/school/narrative_engagement/narrative_engagement.tex" 1681088323 9674 3861bf5331550779601335aaccd89e72 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/courier/pcrr8r.tfm" 1136768653 1292 bd42be2f344128bff6d35d98474adfe3 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/courier/pcrr8t.tfm" 1136768653 1384 4632f5e54900a7dadbb83f555bc61e56 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm" 1136768653 4524 6bce29db5bc272ba5f332261583fee9c ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/times/ptmb8t.tfm" 1136768653 6880 f19b8995b61c334d78fc734065f6b4d4 ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/times/ptmr8c.tfm" 1136768653 1352 fa28a7e6d323c65ce7d13d5342ff6be2 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm" 1136768653 4408 25b74d011a4c66b7f212c0cc3c90061b ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/times/ptmr8t.tfm" 1136768653 6672 e3ab9e37e925f3045c9005e6d1473d56 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm" 1136768653 4640 532ca3305aad10cc01d769f3f91f1029 ""
@@ -41,6 +42,7 @@
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/urw/times/utmri8a.pfb" 1136849748 45458 a3faba884469519614ca56ba5f6b1de1 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/vf/adobe/courier/pcrr8t.vf" 1136768653 2184 8475af1b9cfa983db5f46f5ed4b8f9f7 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/vf/adobe/times/ptmb8t.vf" 1136768653 2340 df9c920cc5688ebbf16a93f45ce7bdd3 ""
+  "/usr/local/texlive/2022/texmf-dist/fonts/vf/adobe/times/ptmr8c.vf" 1136768653 3556 8a9a6dcbcd146ef985683f677f4758a6 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/vf/adobe/times/ptmr8t.vf" 1136768653 2348 91706c542228501c410c266421fbe30c ""
   "/usr/local/texlive/2022/texmf-dist/fonts/vf/adobe/times/ptmri8t.vf" 1136768653 2328 6cd7df782b09b29cfc4d93e55b6b9a59 ""
   "/usr/local/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
@@ -95,6 +97,7 @@
   "/usr/local/texlive/2022/texmf-dist/tex/latex/psnfss/t1pcr.fd" 1137110629 798 d5895e9edc628f2be019beb2c0ec66df ""
   "/usr/local/texlive/2022/texmf-dist/tex/latex/psnfss/t1ptm.fd" 1137110629 774 61d7da1e9f9e74989b196d147e623736 ""
   "/usr/local/texlive/2022/texmf-dist/tex/latex/psnfss/times.sty" 1586716065 856 8e0e5c8cca7b18e0400f97f5a2b90a99 ""
+  "/usr/local/texlive/2022/texmf-dist/tex/latex/psnfss/ts1ptm.fd" 1137110629 619 96f56dc5d1ef1fe1121f1cfeec70ee0c ""
   "/usr/local/texlive/2022/texmf-dist/tex/latex/refcount/refcount.sty" 1576624809 9878 9e94e8fa600d95f9c7731bb21dfb67a4 ""
   "/usr/local/texlive/2022/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1575674187 9715 b051d5b493d9fe5f4bc251462d039e5f ""
   "/usr/local/texlive/2022/texmf-dist/tex/latex/url/url.sty" 1388531844 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
@@ -104,10 +107,10 @@
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1679070564 2826435 8e0c900acbd8fbcf5087d6127556102f ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
   "acl.sty" 1681081172 11158 b6ad1bbc953e18f357974bb34039deb0 ""
-  "narrative_engagement.aux" 1681084813 3466 50ca7a458372e8fb080db3d239e1ff48 "pdflatex"
-  "narrative_engagement.bbl" 1681084361 7894 a603046bf8c4f92dec4cef199eb53468 "bibtex narrative_engagement"
+  "narrative_engagement.aux" 1681088328 3466 3787fcd69205ffe21bd402c3ffc6f893 "pdflatex"
+  "narrative_engagement.bbl" 1681088327 7894 a603046bf8c4f92dec4cef199eb53468 "bibtex narrative_engagement"
   "narrative_engagement.out" 0 -1 0 "pdflatex"
-  "narrative_engagement.tex" 1681084812 7976 d6cc3f82a2df4f077051bd8aac967963 ""
+  "narrative_engagement.tex" 1681088323 9674 3861bf5331550779601335aaccd89e72 ""
   (generated)
   "narrative_engagement.aux"
   "narrative_engagement.log"
