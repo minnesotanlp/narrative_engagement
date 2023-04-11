@@ -6,7 +6,8 @@
 
 % Remove the "review" option to generate the final version.
 \usepackage{acl}
-
+\usepackage{graphicx}
+\graphicspath{ {./narrative_eye_tracking_analysis/images/} }
 % Standard package includes
 \usepackage{times}
 \usepackage{latexsym}
@@ -107,7 +108,7 @@ Description category &  &  & x &  &  & \\\hline
 
 Subquestion: do “Present” highlights (i.e. transported) correlate with faster reading and “Connected” and “Curious” highlights with slower reading as the Jacobs model hypothesized?
 
-\subsection{RQ2: Does gaze duration increase in foregrounding passages and decrease in backgrounding passages?}
+\subsection{RQ2: (move to future work) Does gaze duration increase in foregrounding passages and decrease in backgrounding passages?}
 
 Subquestion: is absorption greater in foregrounding passages?
 
@@ -129,7 +130,7 @@ If they are consistent, can we build a model using all of the users’ data to p
 
 [Description of the eye tracking setup, number of participants - with the breakdown of age and gender, survey, and description of highlighting exercise]
 
-Participants were asked to read two short stories by Anton Chekhov while their eyes were tracked, and then answer an engagement scale survey. After the first page, there were a couple free form questions to gage initial impressions. (Include eye tracker details here from consent form) After reading through both stories, they completed a highlighting exercise where they highlighted areas according to the following categories:
+The study asked 31 English speakers (17 female, 11 male, 3 other, 23 native English speakers, average age: 26) were asked to read two short stories by Anton Chekhov while their eyes were tracked, and then answer an engagement scale survey. (Include eye tracker details here from consent form). After reading through both stories, they completed a highlighting exercise where they highlighted areas according to the following categories:
 
 \begin{itemize}
   \item Present: Able to vividly picture the scene in the story
@@ -139,9 +140,15 @@ Participants were asked to read two short stories by Anton Chekhov while their e
   \item Other: Enjoyed it for a different reason
 \end{itemize}
 
+Due to poor calibration, 8 samples were discarded, leaving 23 (13 female, 8 male, 2 other, 17 native English speakers, average age: 28).
+\begin{figure*}
+  \includegraphics[width=\textwidth,height=10cm]{el_highlights_val_arousal}
+  \caption{Plot of valence and arousal of the highlighted sentences.}
+\end{figure*}
+
 \subsection{Linguistic and discourse features}
 
-[LIWC, concreteness, emotional arc, emotion category, surprisal ... ]
+We extracted the following features from the stories to create sentence-level predictors: sentiment scores using the RoBERTa sentiment base model (footnote with link to huggingface), emotion categories using the DistilRoBERTa emotion base model, concreteness from the Brysbaert (brysbaert2014) corpus, valence and arousal from the NRC-VAD corpus, word frequency from the subtlex corpus, and average word length.
 
 \section{Limitations}
 
@@ -152,7 +159,11 @@ Participants were asked to read two short stories by Anton Chekhov while their e
 [description of mixed model setup with some results]
 "valence (the pleasantness of a stimulus), arousal (the intensity of emotion provoked by a stimulus)" (from norms of valence, arousal, dominance paper)
 
-Other studies have shown that valence and arousal play an important role in predicting interest in a story (Maslej, Jacobs 2015, HSU201596) and Jacobs emphasized the importance of affective and emotional processes. Our results support a slight significance of valence mean and arousal mean of a sentence and a higher significance of valence-span - the difference between valence max and valence min and arousal-span - the difference between arousal max and arousal min, similar to Hsu (2015).
+Other studies have shown that valence and arousal play an important role in predicting interest in a story (Maslej, Jacobs 2015, HSU201596) and Jacobs emphasized the importance of affective and emotional processes. We used linear mixed models to fit predictions of the proportion of the sentence highlighted and gaze duration, with random effects of participant (n=23) and story(n=2). For predicting the proportion of a sentence highlighted, a proxy signifying a higher level of engagement, our results support a slight significance of valence mean (p=0.007), similar to Hsu.
+
+Unlike in other studies, we found that arousal mean had no significance (p=0.598).  However, like Hsu, there was a higher significance for valence-span (p=0.00003) - the difference between valence max and valence min and arousal-span (p=0.00029) - the difference between arousal max and arousal min. This suggests that the reader was more engaged in sentences with a higher range of valence and arousal. This model explains 22.9\% of the variance in the proportion of a sentence highlighted with random effects and 3.7\% without.
+
+In predicting gaze duration, valence mean had a slight significance (p=0.0181) and arousal mean had none (p=0.365) and valence-span (p=0.0336) had a slight significance while arousal-span was found to be significant, but with a negative slope (p=0.00047). These findings do not support Jacobs's proposed framework, which states that passages that engage our emotions would likely result in slower reading. However, we found a positive relationship with negative sentiment (p=0.0048), which may partially support his proposal that the affective mode of reading is more readily triggered by negative emotion. Length of the sentence (p=0.000012) and word frequency (p=0.000048) were the most significant predictors of dwell time. 
 \section{Conclusion}
 
 
