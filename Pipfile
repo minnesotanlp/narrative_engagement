@@ -15,6 +15,7 @@ torch = "*"
 seaborn = "*"
 nltk = "*"
 sklearn = "*"
+more-itertools = "*"
 
 [dev-packages]
 ipykernel = "*"
