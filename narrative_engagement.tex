@@ -32,53 +32,45 @@
 %
 % and set <dim> to something 5cm or larger.
 
-\title{Instructions for *ACL Proceedings}
+\title{An Analysis of Reader Engagement in Literary Fiction through Eye Tracking}
 
-% Author information can be set in various styles:
-% For several authors from the same institution:
-% \author{Author 1 \and ... \and Author n \\
-%         Address line \\ ... \\ Address line}
-% if the names do not fit well on one line use
-%         Author 1 \\ {\bf Author 2} \\ ... \\ {\bf Author n} \\
-% For authors from different institutions:
-% \author{Author 1 \\ Address line \\  ... \\ Address line
-%         \And  ... \And
-%         Author n \\ Address line \\ ... \\ Address line}
-% To start a seperate ``row'' of authors use \AND, as in
-% \author{Author 1 \\ Address line \\  ... \\ Address line
-%         \AND
-%         Author 2 \\ Address line \\ ... \\ Address line \And
-%         Author 3 \\ Address line \\ ... \\ Address line}
 
-\author{First Author \\
-  Affiliation / Address line 1 \\
-  Affiliation / Address line 2 \\
-  Affiliation / Address line 3 \\
-  \texttt{email@domain} \\\And
-  Second Author \\
-  Affiliation / Address line 1 \\
-  Affiliation / Address line 2 \\
-  Affiliation / Address line 3 \\
-  \texttt{email@domain} \\}
+\author{Rose Neis \\
+  University of Minnesota  \\
+  \texttt{neis@umn.edu}
+  \And
+  Karin de Langis \\
+  University of Minnesota\\
+  \texttt{dento019@umn.edu} \\
+  \AND
+  Zae Myung Kim \\
+  University of Minnesota\\
+  \texttt{kim01756@umn.edu}
+  \And
+  Dongyeop Kang \\
+  University of Minnesota\\
+  \texttt{dongyeop@umn.edu} \\
+  }
 
 \begin{document}
+\pagenumbering{arabic}
 \maketitle
+
 \begin{abstract}
 Capturing readers' engagement in fiction is a challenging but important aspect of narrative understanding. In this study, we collected 23 readers’ reactions to 2 short stories through eye tracking, sentence-level annotations, and an overall engagement scale survey. Our aim is to analyze the significance of various qualities of the text in predicting how engaging a reader is likely to find it. As enjoyment of fiction is highly contextual, we will also investigate individual differences in our data. Furthering our understanding of what captivates readers in fiction will help better inform models used in creative narrative generation and collaborative writing tools.
-
 \end{abstract}
-
 \section{Introduction}
+The question of reader engagement in fiction has been studied in the psychology field for decades, with some of the foundational theoretical work from Gerrig on Transportation Theory \citep{gerrig_1993} paving the way for more recent theoretical frameworks and experimental setups, which started in the early 2000s with the work by Green et al. interested in the role of transportation on the persuasiveness of narratives \citep{Green2004,green_brock_kaufman_2006}. In the past ten years, this question has been picked up in more fields, such as cognitive science, psycholinguistics, and computational narrative understanding, so we have more theoretical and experimental work to draw from.
 
-The question of reader engagement in fiction has been studied in the psychology field for decades, with some of the foundational theoretical work from Iser (citation needed) and Gerrig paving the way for more recent theoretical frameworks and experimental setups, which started in the early 2000s with the work by Green (citation) in the field of Media Psychology. In the past ten years, this question has been picked up in more fields, such as cognitive science, psycholinguistics, and computational narrative understanding.
+However, as Arthur Jacobs emphasized in his article, "Towards a neurocognitive poetics model of literary reading", the samples normally collected are small and not enough to compensate for individual differences in reading patterns due to reader context and other situational factors \citep{willems_2015}. In order to help close the experimental gap, one contribution of this study is to provide the computational community with a data set of reader reactions to natural stories, which Jacobs refers to as "hot" experimental research.
 
-However, as Jacobs emphasized (2018), the samples normally collected are small and not enough to compensate for individual differences in reading patterns due to reader context, among other factors. In order to help close the experimental gap, one contribution of this study is to provide the computational community with a data set of reader reactions to literary short fiction, which Jacobs refers to as "hot" experimental research. This is opposed to setups in which the stories are contrived for the purpose of the study.
-
-Green's 2006 study narrowed down the salient aspects of reader engagement to create narrative engagement scale, which we have modified slightly to gage overall interest in the story. In addition, in order to obtain more granular information, we used these aspects to design an annotation task that would provide sentence-level feedback.
+In a 2009 study, a pair of researchers narrowed down the salient aspects of reader engagement, building off of Green's transportation framework to create narrative engagement scale \citep{busselle2009}, which we have modified slightly to gage overall interest in the story. In addition, in order to obtain more granular information, we used these aspects to design an annotation task that would provide sentence-level feedback. We use linear mixed models to discover textual features that have an impact on engagement and dwell time across readers.
 
 \section{Related Research}
+There have been several eye tracking and fMRI studies in the area of reader interest (a few are shown in \autoref{tab:first}). One small 5-participant study indicated some relationship between reading engagement and saccade angles as well as blink frequency \citep{kunze2015}. Another 13-participant study showed that words in enactive passages had on average longer fixation durations and dwell times \citep{Magyari2020}. Based on survey responses, the authors hypothesize that in the enactive texts, the ease of imagery contributes to greater involvement in imagination and results in an overall slower reading speed.
 
-[See Table 1 for comparison matrix. Brief description of other experimental setups and conclusions]
+Then a much larger study in 2019 found a strong relationship between gaze durations and mental event descriptions correlated with subject’s scores on the Attention subscale of the Story World Absorption Scale (SWAS), as well as reported evoked responses and positive affect, indicating that absorption in the story correlates with longer gaze durations. An fMRI study found valence and arousal scores as good predictors of overall emotional experience of the reader. 
+
 
 \begin{table*}[t]
 \centering
@@ -99,7 +91,7 @@ Description category &  &  & x &  &  & \\\hline
 
 \end{tabular}
 \caption{Comparison between our study and other similar experiments.}
-\label{tab:accents}
+\label{tab:first}
 \end{table*}
 
 \section{Research questions}
@@ -136,9 +128,9 @@ The study asked 31 English speakers (17 female, 11 male, 3 other, 23 native Engl
   \item Other: Enjoyed it for a different reason
 \end{itemize}
 
-Due to poor calibration, 8 samples were discarded, leaving 23 (13 female, 8 male, 2 other, 17 native English speakers, average age: 28).
+Due to calibration issues, 8 samples were discarded, leaving 23 (13 female, 8 male, 2 other, 17 native English speakers, average age: 28).
 
-The eye tracking results were drift corrected and interest area reports were exported using words as interest areas. Outliers for dwell time were removed using inner quartile range (1.7\% of the data). The data was aggregated to the sentence level and dwell time values were averaged by character count. Due to some missing data, null values for the eye tracking features were filled with the average of the 5 nearest sentences (5.7\% of all sentences read across participants).
+The eye tracking results were drift corrected and interest area reports were exported using words as interest areas. Outliers for dwell time were removed using inner quartile range (1.7\% of the data). The data was aggregated to the sentence level and dwell time values were normalized by sentence character count. To handle missing data, null values for the eye tracking features were filled with the average of the 5 nearest sentences (5.7\% of all sentences read across participants).
 
 \begin{figure*}
   \includegraphics[height=6cm]{el_highlights_val_arousal}
@@ -177,7 +169,7 @@ Other studies have shown that valence and arousal play an important role in pred
   \hline
 \end{tabular}
 \caption{Fixed Effects for predicting proportion of sentence highlighted}
-\label{tab:accents}
+\label{tab:second}
 \end{table*}
 
 Unlike in other studies, we found that arousal mean had no significance (p=0.598).  However, like Hsu, there was a higher significance for valence-span (p=0.00003) - the difference between valence max and valence min and arousal-span (p=0.00029) - the difference between arousal max and arousal min. This suggests that the reader was more engaged in sentences with a higher range of valence and arousal. Other features that had an effect were negative sentiment score (p=8.74e-07) and character count (p=3.97e-05). This model explains 22.9\% of the variance in the proportion of a sentence highlighted with random effects and 3.6\% without.
@@ -201,12 +193,15 @@ Unlike in other studies, we found that arousal mean had no significance (p=0.598
   \hline
   \end{tabular}
   \caption{Fixed Effects for predicting gaze duration}
-  \label{tab:accents}
+  \label{tab:third}
   \end{table*}
 
-In predicting gaze duration, valence mean had a slight significance (p=0.0181) and arousal mean had none (p=0.365) and valence-span (p=0.0336) had a slight significance while arousal-span was found to be significant, but with a negative slope (p=0.00047). These findings do not support Jacobs's proposed framework, which states that passages that engage our emotions would likely result in slower reading. However, we found a positive relationship with negative sentiment (p=0.0048), which may partially support his proposal that the affective mode of reading is more readily triggered by negative emotion. Length of the sentence (p=0.000012) and word frequency (p=0.000048) were the most significant predictors of dwell time. This model explains 30.15\% of the variance in the proportion of a sentence highlighted with random effects and 0.7\% without. 
+In predicting gaze duration, valence mean had a slight significance (p=0.0181) and arousal mean had none (p=0.365) and valence-span (p=0.0336) had a slight significance while arousal-span was found to be significant, but with a negative slope (p=0.00047). These findings do not support Jacobs's proposed framework, which states that passages that engage our emotions would likely result in slower reading. However, we found a positive relationship with negative sentiment (p=0.0048), which may partially support his proposal that the affective mode of reading is more readily triggered by negative emotion. Length of the sentence (p=0.000012) and word frequency (p=0.000048) were the most significant predictors of dwell time. This model explains 30.15\% of the variance in the proportion of a sentence highlighted with random effects and 0.7\% without.
+
+
 
 \section{Future Work}
+
 
 Investigate: Does gaze duration increase in foregrounding passages and decrease in backgrounding passages?
 
@@ -215,7 +210,7 @@ Investigate: Does gaze duration increase in foregrounding passages and decrease 
 
 \subsection{References}
 
-\nocite{Green2004,liwc_22,kuzmicova2014,brysbaert2014,chung-fat-yim_cilento_piotrowska_mar_2019,Maslej2019TheTF,boyd_blackburn_pennebaker_2020,green_brock_kaufman_2006,kasunic_kaufman_2018,Consoli2018,busselle2009,jacobs2018,jacobs2017,stockwell2002cognitive,HSU201596,willems_2015,mak2019,kunze2015,ferreira-goncalo-oliveira-2018-seeking,rashkin-etal-2016-connotation,aryani2013,delatorre2019,andrade2020,indico2015}
+\nocite{Green2004,liwc_22,kuzmicova2014,brysbaert2014,Maslej2019TheTF,green_brock_kaufman_2006,Consoli2018,busselle2009,jacobs2018,jacobs2017,stockwell2002cognitive,HSU201596,willems_2015,mak2019,kunze2015,ferreira-goncalo-oliveira-2018-seeking,aryani2013,delatorre2019,andrade2020,indico2015,gerrig_1993,Magyari2020}
 
 \bibliographystyle{acl_natbib}
 \bibliography{anthology,custom}
