@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex narrative_engagement"] 1681708220 "narrative_engagement.aux" "narrative_engagement.bbl" "narrative_engagement" 1681708226
+["bibtex narrative_engagement"] 1681749579 "narrative_engagement.aux" "narrative_engagement.bbl" "narrative_engagement" 1681749585
   "./acl_natbib.bst" 1681081217 46515 00ea04ac076a39757781b946e66af096 ""
   "anthology.bib" 1681080958 42115314 2ae2be191b0e9b07c5cfc91a2babb9fe ""
   "custom.bib" 1681708214 16166 d9cbb89f09b4ba84324becaf2c546285 ""
-  "narrative_engagement.aux" 1681708225 4336 785c135a1f84cb994493d36f447505b9 "pdflatex"
+  "narrative_engagement.aux" 1681749585 4336 c9843eda5abbf30dbe07615c872d2d2e "pdflatex"
   (generated)
   "narrative_engagement.bbl"
   "narrative_engagement.blg"
-["pdflatex"] 1681708223 "/Users/neis/repos/school/narrative_engagement/narrative_engagement.tex" "narrative_engagement.pdf" "narrative_engagement" 1681708226
-  "/Users/neis/repos/school/narrative_engagement/narrative_engagement.tex" 1681708051 16503 ca47dda10c7895636e3baffe86d6e8d0 ""
+["pdflatex"] 1681749582 "/Users/neis/repos/school/narrative_engagement/narrative_engagement.tex" "narrative_engagement.pdf" "narrative_engagement" 1681749585
+  "/Users/neis/repos/school/narrative_engagement/narrative_engagement.tex" 1681749577 18222 9a39c1a7e18542faef3a6b4200bcadcd ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/courier/pcrr8r.tfm" 1136768653 1292 bd42be2f344128bff6d35d98474adfe3 ""
@@ -123,10 +123,10 @@
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1679070564 2826435 8e0c900acbd8fbcf5087d6127556102f ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
   "acl.sty" 1681081172 11158 b6ad1bbc953e18f357974bb34039deb0 ""
-  "narrative_engagement.aux" 1681708225 4336 785c135a1f84cb994493d36f447505b9 "pdflatex"
-  "narrative_engagement.bbl" 1681708223 7586 108c825fbc515e25c6c6f7425d24ca2c "bibtex narrative_engagement"
+  "narrative_engagement.aux" 1681749585 4336 c9843eda5abbf30dbe07615c872d2d2e "pdflatex"
+  "narrative_engagement.bbl" 1681749582 7586 108c825fbc515e25c6c6f7425d24ca2c "bibtex narrative_engagement"
   "narrative_engagement.out" 0 -1 0 "pdflatex"
-  "narrative_engagement.tex" 1681708051 16503 ca47dda10c7895636e3baffe86d6e8d0 ""
+  "narrative_engagement.tex" 1681749577 18222 9a39c1a7e18542faef3a6b4200bcadcd ""
   "narrative_eye_tracking_analysis/images//el_highlights_sentiment.png" 1681527638 438691 410560889144120182e586968890e25f ""
   "narrative_eye_tracking_analysis/images//el_highlights_val_arousal.png" 1681274465 456518 e04ff1ea46e6ac57414c8e63349d67da ""
   "narrative_eye_tracking_analysis/images//engaged_dt_el.png" 1681707780 446076 2e2b5e4ea5a7dcee8ba6eecb9155d535 ""
