@@ -11,7 +11,7 @@
 % Standard package includes
 \usepackage{times}
 \usepackage{latexsym}
-
+\usepackage{hyperref}
 % For proper rendering and hyphenation of words containing Latin characters (including in bib files)
 \usepackage[T1]{fontenc}
 % For Vietnamese characters
@@ -25,6 +25,7 @@
 % but it will improve the layout of the manuscript,
 % and will typically save some space.
 \usepackage{microtype}
+\usepackage{float}
 
 % If the title and author information does not fit in the area allocated, uncomment the following
 %
@@ -67,12 +68,10 @@ However, as Arthur Jacobs emphasized in his article, "Towards a neurocognitive p
 In a 2009 study, a pair of researchers narrowed down the salient aspects of reader engagement, building off of Green's transportation framework to create narrative engagement scale \citep{busselle2009}, which we have modified slightly to gage overall interest in the story. In addition, in order to obtain more granular information, we used these aspects to design an annotation task that would provide sentence-level feedback. We use linear mixed models to discover textual features that have an impact on engagement and dwell time across readers.
 
 \section{Related Research}
-There have been several eye tracking and fMRI studies in the area of reader interest (a few are shown in \autoref{tab:first}). One small 5-participant study indicated some relationship between reading engagement and saccade angles as well as blink frequency \citep{kunze2015}. Another 13-participant study showed that words in enactive passages had on average longer fixation durations and dwell times \citep{Magyari2020}. Based on survey responses, the authors hypothesize that in the enactive texts, the ease of imagery contributes to greater involvement in imagination and results in an overall slower reading speed.
-
-Then a much larger study in 2019 found a strong relationship between gaze durations and mental event descriptions correlated with subject’s scores on the Attention subscale of the Story World Absorption Scale (SWAS), as well as reported evoked responses and positive affect, indicating that absorption in the story correlates with longer gaze durations. An fMRI study found valence and arousal scores as good predictors of overall emotional experience of the reader. 
+There have been several eye tracking and fMRI studies in the area of reader interest (a few are shown in \autoref{tab:first}). We will compare our findings with a select few existing experiments as well as Jacobs' proposed framework. One 13-participant study showed that words in enactive passages had on average longer fixation durations and dwell times \citep{Magyari2020}. Based on survey responses, the authors hypothesize that in the enactive texts, the ease of imagery contributes to greater involvement in imagination and results in an overall slower reading speed. An fMRI study found valence and arousal scores as good predictors of overall emotional experience of the reader \citep{HSU201596}. 
 
 
-\begin{table*}[t]
+\begin{table*}[h]
 \centering
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
@@ -97,22 +96,19 @@ Description category &  &  & x &  &  & \\\hline
 \section{Research questions}
 
 \subsection{RQ1: Does absorption in a story lead to longer gaze durations?}
+\label{subsection:rq1}
 
-Subquestion: do “Present” highlights (i.e. transported) correlate with faster reading and “Connected” and “Curious” highlights with slower reading as the Jacobs model hypothesized?
+To answer this question, we will look at how well “Present” highlights (i.e. transported) correlate with faster reading and “Connected” and “Curious” highlights with slower reading to see if we find a relationship between dwell time and different modes of reading -- one being immersed and the other more reflective. We will also look at whether features related to a more affective reading mode lead to higher dwell times as Jacobs predicts.
 
-\subsection{RQ2: (move to future work) Does gaze duration increase in foregrounding passages and decrease in backgrounding passages?}
+\subsection{RQ2: How much is engagement dependent on reader context vs. linguistic features?}
+\label{subsection:rq2}
 
-Subquestion: is absorption greater in foregrounding passages?
+We will attempt to answer this question by seeing how well the features we extracted can predict whether a sentence is highlighted by readers.
 
-\subsection{RQ3: How much is engagement dependent on reader context vs. linguistic (discourse) features?}
+\subsection{RQ3: Are dwell time patterns consistent across readers?}
+\label{subsection:rq3}
 
-What are the overlapping cases (sentences) when those two sets of features agree? What are the diverging cases? Can discourse features be used as a proxy for predicting eye-tracking features?
-
-\subsection{RQ4: Are eye-tracking patterns consistent across users?}
-
-If they are consistent, can we build a model using all of the users’ data to predict the engagement label or their future time-series data? If not, can we build separate models for each user? Analyses on diverging cases between the users: why are they diverging? Perhaps based on background, personal experience, interests, etc.
-
-\subsection{RQ5: Is there a correlation between a sentence having low average word valence and reader’s absorption?}
+In order to answer this question, we will scale dwell times per participant and evaluate the pattern over the story.
 
 \section{Methods}
 
@@ -132,7 +128,7 @@ Due to calibration issues, 8 samples were discarded, leaving 23 (13 female, 8 ma
 
 The eye tracking results were drift corrected and interest area reports were exported using words as interest areas. Outliers for dwell time were removed using inner quartile range (1.7\% of the data). The data was aggregated to the sentence level and dwell time values were normalized by sentence character count. To handle missing data, null values for the eye tracking features were filled with the average of the 5 nearest sentences (5.7\% of all sentences read across participants).
 
-\begin{figure*}
+\begin{figure*}[h]
   \includegraphics[height=6cm]{el_highlights_val_arousal}
   \includegraphics[height=6cm]{el_highlights_sentiment}
   \caption{Highlights and features.}
@@ -140,77 +136,95 @@ The eye tracking results were drift corrected and interest area reports were exp
 
 \subsection{Linguistic and discourse features}
 
-We extracted the following features from the stories to create sentence-level predictors: sentiment scores using the RoBERTa sentiment base model (footnote with link to huggingface), emotion categories using the DistilRoBERTa emotion base model, concreteness from the Brysbaert (brysbaert2014) corpus, valence and arousal from the NRC-VAD corpus, word frequency from the subtlex corpus, and average word length.
+We extracted the following features from the stories to create sentence-level predictors: sentiment scores using the RoBERTa sentiment base model \footnote{https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment}, emotion categories using the DistilRoBERTa emotion base model \footnote{https://huggingface.co/j-hartmann/emotion-english-distilroberta-base}, concreteness scores from the Brysbaert corpus \citep{brysbaert2014}, valence and arousal from the NRC-VAD corpus \citep{valence_arousal_dominance_2013}, word frequency from the subtlex corpus \citep{Brysbaert_2015}, and average word length.
 
 \section{Limitations}
 
-There is an imbalance in how many participants read each story first (Expensive Lessons: 16, Schoolmistress: 7), which may affect level of attention for the second story. In addition, the stories did not receive very high scores on average in the engagement survey. On a scale from 0-4, Expensive Lessons got an average of 2.09 and Schoolmistress got 1.92.
+There are a few issues with the data that should be mentioned. Since the participants were asked to read two stories in a row, it is best to make sure there is a balance in which story is read first. However, our data ended up with a skew towards one story (Expensive Lessons: 16, Schoolmistress: 7), which may affect level of attention for the second story. 
+
+In addition, the stories did not receive very high scores on average in the engagement survey. On a scale from 0-4, Expensive Lessons got an average of 2.09 and Schoolmistress averaged 1.92. Ideally, stories used for such studies should be more widely popular in order to make absorption more likely. Perhaps in part due to the low average score, the highlighting data is sparse, making it difficult to find relationships between dwell time and engagement categories.
 
 \section{Results}
 
-Other studies have shown that valence and arousal play an important role in predicting interest in a story (Maslej, Jacobs 2015, HSU201596) and Jacobs emphasized the importance of affective and emotional processes. We used linear mixed models to fit predictions of the proportion of the sentence highlighted and gaze duration, with random effects of participant (n=23) and story (n=2). For predicting the proportion of a sentence highlighted, a proxy for a higher level of engagement, our results support a slight significance of valence mean (p=0.0049), similar to Hsu.
+Other studies have shown that valence and arousal play an important role in predicting interest in a story \citep{Maslej2019TheTF, HSU201596} and Jacobs emphasized the importance of affective and emotional processes in his framework \citep{willems_2015}. In order to determine the importance of these values for our data, we used linear mixed models to fit predictions of the proportion of the sentence highlighted and gaze duration, with random effects of participant (n=23) and story (n=2).
 
-\begin{table*}[t]
-  \centering
-  \begin{tabular}{|l|r|r|r|r|r|r|}
-  \hline
-   & Estimate & Std. Error & df & t value & $Pr(>|t|)$ & Sig. \\
-  \hline
-  (Intercept) & 0.01910 & 0.07439 & 220.85084 & 0.257 & 0.797621 & \\
-  character count & 0.15837 & 0.03851 & 7070.78993 & 4.112 & $3.97 \times 10^{-5}$ & $\ast\ast\ast$ \\
-  word frequency avg. & 0.06215 & 0.09899 & 7094.55339 & 0.628 & 0.530152 & \\
-  positive & 0.03362 & 0.02244 & 7120.97997 & 1.498 & 0.134154 & \\
-  negative & 0.10018 & 0.02035 & 7112.05570 & 4.923 & 8.74e-07 & $\ast\ast\ast$ \\
-  concreteness & 0.01150 & 0.01361 & 6942.09621 & 0.845 & 0.398257 & \\
-  valence avg. & 0.12612 & 0.04488 & 7120.08454 & 2.810 & 0.004964 & $\ast\ast$ \\
-  arousal avg. & -0.03312 & 0.05385 & 7118.47514 & -0.615 & 0.538580 & \\
-  valence diff. & 0.10635 & 0.02634 & 7118.61978 & 4.037 & $5.47 \times 10^{-5}$ & $\ast\ast\ast$ \\
-  arousal diff. & 0.11636 & 0.03165 & 7064.83819 & 3.677 & 0.000238 & $\ast\ast\ast$ \\
-  \hline
+
+\begin{table*}[h]
+\centering
+\begin{tabular}{|l|r|r|r|r|r|r|}
+\hline
+& Estimate & Std. Error & df & t value & $Pr(>|t|)$ & Sig. \\
+\hline
+(Intercept) & -0.05352 & 0.07761 & 296.542 & -0.690 & 0.49102 & \\
+character count & 0.16092 & 0.03710 & 7023.920 & 4.337 & $1.46 \times 10^{-5}$ & $\ast\ast\ast$ \\
+word frequency & 0.07002 & 0.04102 & 6769.055 & 1.707 & 0.08786 & . \\
+positive & 0.03786 & 0.02241 & 7118.596 & 1.690 & 0.09116 & . \\
+negative & 0.09271 & 0.02044 & 7085.737 & 4.536 & $5.84 \times 10^{-6}$ & $\ast\ast\ast$ \\
+concreteness & 0.01938 & 0.01366 & 6380.945 & 1.419 & 0.15598 & \\
+valence mean & 0.11482 & 0.04536 & 7118.133 & 2.531 & 0.01139 & $\ast$ \\
+arousal mean & -0.02189 & 0.05424 & 7118.401 & -0.404 & 0.68656 & \\
+valence span & 0.10988 & 0.02647 & 7117.824 & 4.151 & $3.35 \times 10^{-5}$ & $\ast\ast\ast$ \\
+arousal span & 0.10874 & 0.03210 & 7057.269 & 3.388 & 0.00071 & $\ast\ast\ast$ \\
+surprise & 0.08417 & 0.02558 & 6987.261 & 3.290 & 0.00101 & $\ast\ast$ \\
+disgust & 0.02947 & 0.01563 & 7115.526 & 1.885 & 0.05949 & . \\
+\hline
 \end{tabular}
 \caption{Fixed Effects for predicting proportion of sentence highlighted}
 \label{tab:second}
 \end{table*}
 
-Unlike in other studies, we found that arousal mean had no significance (p=0.598).  However, like Hsu, there was a higher significance for valence-span (p=0.00003) - the difference between valence max and valence min and arousal-span (p=0.00029) - the difference between arousal max and arousal min. This suggests that the reader was more engaged in sentences with a higher range of valence and arousal. Other features that had an effect were negative sentiment score (p=8.74e-07) and character count (p=3.97e-05). This model explains 22.9\% of the variance in the proportion of a sentence highlighted with random effects and 3.6\% without.
 
-\begin{table*}[t]
+For predicting the proportion of a sentence highlighted, an indication of a higher level of engagement, our results support a slight significance of valence mean (p=0.01), similar to Hsu et al \citep{HSU201596}. Unlike in other studies, we found that arousal mean had no significance (p=0.686).  However, similar to Hsu et al., there was a higher significance for valence-span (p=0.00003) --- the difference between valence max and valence min and arousal-span (p=0.00071) --- the difference between arousal max and arousal min. This suggests that the reader was more engaged in sentences with a higher range of valence and arousal.
+
+We also experimented with including emotion categories, and surprise was found to be a significant effect (p=0.001). Other features that had an impact were negative sentiment score (p=5.84e-06) and character count (p=.000014). These findings partially align with Maslej et al. study \citep{Maslej2019TheTF}, where negative emotion predicted higher story ratings, although unlike their findings, there was no relationship between concreteness and engagement.
+
+This model explains 3.7\% of the variance without random effects and 23\% with. So, with respect to \hyperref[subsection:rq2]{RQ2}, the reader context is important in elucidating the relationships of the fixed effects with engagement.
+
+\begin{table*}[h]
   \centering
   \begin{tabular}{|l|r|r|r|r|r|r|}
   \hline
   & Estimate & Std. Error & df & t value & $Pr(>|t|)$ & Sig. \\
   \hline
-  (Intercept) & 0.1255 & 0.0233 & 91.28 & 5.396 & 5.34e-07 & $\ast\ast\ast$ \\
-  word frequency avg. & 0.5548 & 0.0297 & 7117 & 18.656 & $< 2 \times 10^{-16}$ & $\ast\ast\ast$ \\
-  positive & 0.0251 & 0.0068 & 7117 & 3.707 & 0.000211 & $\ast\ast$ \\
-  negative & 0.0191 & 0.0061 & 7116 & 3.121 & 0.001813 & $\ast\ast$ \\
-  concreteness & 0.0146 & 0.0041 & 7086 & 3.568 & 0.000362 & $\ast\ast$ \\
-  valence avg. & -0.0896 & 0.0135 & 7117 & -6.655 & $3.03 \times 10^{-11}$ & $\ast\ast\ast$ \\
-  arousal avg. & 0.0147 & 0.0161 & 7117 & 0.914 & 0.360620 & \\
-  valence diff. & -0.0396 & 0.0075 & 7116 & -5.306 & $1.16 \times 10^{-7}$ & $\ast\ast\ast$ \\
-  arousal diff. & -0.0801 & 0.0089 & 7117 & -9.026 & $< 2 \times 10^{-16}$ & $\ast\ast\ast$ \\
-  proportion & -0.0021 & 0.0036 & 7141 & -0.598 & 0.550015 & \\
+  (Intercept) & 0.1010 & 0.0245 & 84.24 & 4.129 & $8.53 \times 10^{-5}$ & $\ast\ast\ast$ \\
+  word frequency & 0.1877 & 0.0124 & 7105 & 15.086 & $< 2 \times 10^{-16}$ & $\ast\ast\ast$ \\
+  positive & 0.01352 & 0.006773 & 7120 & 1.996 & 0.045920 & $\ast$ \\
+  negative & 0.009938 & 0.006108 & 7120 & 1.627 & 0.103740 & \\
+  concreteness & 0.01515 & 0.004112 & 7077 & 3.683 & 0.000232 & $\ast\ast\ast$ \\
+  valence mean & -0.06013 & 0.01367 & 7120 & -4.399 & $1.10 \times 10^{-5}$ & $\ast\ast\ast$ \\
+  arousal mean & -0.01520 & 0.01625 & 7120 & -0.935 & 0.349762 & \\
+  valence span & -0.02226 & 0.007489 & 7120 & -2.972 & 0.002967 & $\ast\ast$ \\
+  arousal span & -0.06345 & 0.009020 & 7120 & -7.034 & $2.19 \times 10^{-12}$ & $\ast\ast\ast$ \\
+  surprise & -0.03633 & 0.007631 & 7113 & -4.761 & $1.96 \times 10^{-6}$ & $\ast\ast\ast$ \\
   \hline
   \end{tabular}
   \caption{Fixed Effects for predicting gaze duration}
   \label{tab:third}
   \end{table*}
+  
+In predicting gaze duration, valence mean had a slight significance (p=0.00001) and arousal mean had none (p=0.349) and valence-span (p=0.0029) had some significance while arousal-span was found to be very significant (p=2.19e-12). Related to \hyperref[subsection:rq1]{RQ1}, the negative relationship between valence mean and dwell time supports part of Jacobs's proposed framework, which states that passages that engage our emotions, particularly negative valence, would likely result in slower reading. There was no relationship between highlights and dwell time, however, so we were not able to confirm whether the different categories of engagement correlated with different modes of reading.
 
-In predicting gaze duration, valence mean had a slight significance (p=0.0181) and arousal mean had none (p=0.365) and valence-span (p=0.0336) had a slight significance while arousal-span was found to be significant, but with a negative slope (p=0.00047). These findings do not support Jacobs's proposed framework, which states that passages that engage our emotions would likely result in slower reading. However, we found a positive relationship with negative sentiment (p=0.0048), which may partially support his proposal that the affective mode of reading is more readily triggered by negative emotion. Length of the sentence (p=0.000012) and word frequency (p=0.000048) were the most significant predictors of dwell time. This model explains 30.15\% of the variance in the proportion of a sentence highlighted with random effects and 0.7\% without.
+There was also a positive relationship between concreteness and dwell time (p=0.0002). According to the prevaling theory in neuroscience, "words referring to easily perceptible entities coactivate the brain regions involved in the perception of those entities" \citep{brysbaert2014}. This observation may indicate that this leads to longer processing times. This may also align with the findings of Maslej et al., where enactive passages had higher dwell times. Word frequency (p<2e-16) and arousal span were the most significant fixed effects for predicting dwell time.
+
+To evaluate how consistent dwell time patterns were across readers (\hyperref[subsection:rq3]{RQ3}), we examined the dwell time graphs of participants to see if there was a similar pattern. We noticed an especially striking similarity in patterns amongst readers who were highly engaged (see \autoref{fig:fig2}).
+
+\begin{figure*}[ht]
+  \includegraphics[height=8cm]{engaged_dt_el}
+  \caption{Dwell time for engaged readers}
+  \label{fig:fig2}
+\end{figure*}
+
+%\section{Future Work}
 
 
-
-\section{Future Work}
-
-
-Investigate: Does gaze duration increase in foregrounding passages and decrease in backgrounding passages?
+%Investigate: Does gaze duration increase in foregrounding passages and decrease in backgrounding passages?
 
 \section{Conclusion}
 
 
 \subsection{References}
 
-\nocite{Green2004,liwc_22,kuzmicova2014,brysbaert2014,Maslej2019TheTF,green_brock_kaufman_2006,Consoli2018,busselle2009,jacobs2018,jacobs2017,stockwell2002cognitive,HSU201596,willems_2015,mak2019,kunze2015,ferreira-goncalo-oliveira-2018-seeking,aryani2013,delatorre2019,andrade2020,indico2015,gerrig_1993,Magyari2020}
+\nocite{Green2004,liwc_22,kuzmicova2014,brysbaert2014,Maslej2019TheTF,green_brock_kaufman_2006,Consoli2018,busselle2009,jacobs2018,jacobs2017,stockwell2002cognitive,HSU201596,willems_2015,mak2019,kunze2015,ferreira-goncalo-oliveira-2018-seeking,aryani2013,delatorre2019,andrade2020,indico2015,gerrig_1993,Magyari2020,valence_arousal_dominance_2013,Brysbaert_2015}
 
 \bibliographystyle{acl_natbib}
 \bibliography{anthology,custom}

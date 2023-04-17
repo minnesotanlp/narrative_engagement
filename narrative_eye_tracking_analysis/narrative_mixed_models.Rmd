@@ -24,33 +24,39 @@ library(optimx)
 library(MuMIn)
 library(lmerTest)
 library(ggplot2)
+library("tidyr")
+
 all_data_continuous <- read_csv("./combined_with_percent_highlighted.csv")
+norm_dt_smoothed <- read_csv("./norm_dt_smooth.csv")
 normalize_col <- function(x){(x-min(x, na.rm = TRUE))/(max(x, na.rm = TRUE)-min(x, na.rm = TRUE))}
-all_data_continuous$word_norm <- normalize_col(all_data_continuous$word)
-all_data_continuous$character_count <- normalize_col(all_data_continuous$word_length * all_data_continuous$word)
+all_data_continuous$word_norm <- normalize_col(all_data_continuous$word_count)
+all_data_continuous$character_count <- all_data_continuous$word_length * all_data_continuous$word_count
+all_data_continuous$character_count_norm <- normalize_col(all_data_continuous$character_count)
 all_data_continuous$norm_dt = all_data_continuous$IA_DWELL_TIME_SMOOTHED / all_data_continuous$character_count
 all_data_continuous <- all_data_continuous %>%
     group_by(RECORDING_SESSION_LABEL) %>%
     mutate(across(c(norm_dt), scales::rescale))
-all_data_continuous$norm_reg_path = all_data_continuous$IA_REGRESSION_PATH_DURATION_SMOOTHED / all_data_continuous$word
-all_data_continuous$highlight = ifelse(all_data_continuous$category == 0, 0, 1)
-all_data_continuous$valence_diff = all_data_continuous$valence_max_x - all_data_continuous$valence_min_x
-all_data_continuous$arousal_diff = all_data_continuous$arousal_max_x - all_data_continuous$arousal_min_x
-all_data_continuous$word_freq_avg <- normalize_col(all_data_continuous$word_freq / all_data_continuous$word)
-all_data_continuous$word_freq_norm <- normalize_col(all_data_continuous$word_freq)
-
-
-
-
-
-engagement_highlights <- read_csv("./engagement_highlights.csv")
-engagement_highlights$percentage_highlighted <- engagement_highlights$highlight_weight / engagement_highlights$word
 # rename column 'Unnamed:\ 0' to 'sentence'
 all_data_continuous <- all_data_continuous %>%
     rename('sentence' = 'Unnamed:\ 0')
 
 all_data_continuous <- all_data_continuous %>%
    rename('text' = '0')
+all_data_continuous <- merge(x= all_data_continuous, y=norm_dt_smoothed, by=c("story", "sentence", "RECORDING_SESSION_LABEL"))
+
+#all_data_continuous <- all_data_continuous %>%
+#  mutate_at(vars(contains('valence')), ~replace_na(.,0.5)) %>%
+#  mutate_at(vars(contains('arousal')), ~replace_na(.,0.5))
+all_data_continuous$norm_reg_path = all_data_continuous$IA_REGRESSION_PATH_DURATION_SMOOTHED / all_data_continuous$word_count
+all_data_continuous$highlight = ifelse(all_data_continuous$category == 0, 0, 1)
+all_data_continuous$valence_diff = all_data_continuous$valence_max_x - all_data_continuous$valence_min_x
+all_data_continuous$arousal_diff = all_data_continuous$arousal_max_x - all_data_continuous$arousal_min_x
+all_data_continuous$word_freq_avg <- normalize_col(all_data_continuous$word_freq / all_data_continuous$word_count)
+all_data_continuous$word_freq_norm <- normalize_col(all_data_continuous$word_freq)
+
+engagement_highlights <- read_csv("./engagement_highlights.csv")
+engagement_highlights$percentage_highlighted <- engagement_highlights$highlight_weight / engagement_highlights$word
+
 all_data_continuous$no_highlight <- ifelse(all_data_continuous$category == 0, 1, 0)
 all_data_continuous$present <- ifelse(all_data_continuous$category == 1, 1, 0)
 all_data_continuous$confused <- ifelse(all_data_continuous$category == 2, 1, 0)
@@ -80,6 +86,7 @@ sm_with_sent = merge(x = sm_story, y = sm_sentiment, by = "sentence")
 el_all_smoothed = merge(x = el_with_sent, y = el_valence, by = "sentence")
 sm_all_smoothed = merge(x = sm_with_sent, y = sm_valence, by = "sentence")
 combined_all_smoothed <- rbind(el_all_smoothed, sm_all_smoothed)
+engaged_readers <- combined_all_smoothed[combined_all_smoothed$engagement_score >= 2.00,]
 ```
 ```{r}
 el_all_smoothed <- el_all_smoothed %>%
@@ -104,7 +111,7 @@ sm_all_smoothed <- sm_all_smoothed %>%
     mutate(across(c(connected), scales::rescale))%>%
     mutate(across(c(other), scales::rescale))
 
-combined_all_smoothed <- rbind(el_all_smoothed, sm_all_smoothed)
+combined_grouped <- rbind(el_all_smoothed, sm_all_smoothed)
 
 
 
@@ -115,14 +122,14 @@ all_data_continuous <- all_data_continuous %>%
 ```
 
 ```{r}
-model_highlight_proportion_el = lmer(proportion_x ~ 1 +  character_count + word_freq_avg + positive + negative + concreteness  + valence_diff + arousal_diff + (1 | RECORDING_SESSION_LABEL) , data=el_story)
-model_highlight_proportion_sm = lmer(proportion_x ~ 1 +  character_count + word_freq_avg + positive + negative + concreteness  + valence_diff + arousal_diff + (1 | RECORDING_SESSION_LABEL) , data=sm_story)
-model_highlight_proportion = lmer(proportion_x ~ 1 + character_count + word_freq_avg + positive + negative + concreteness  + valence_avg_x + arousal_avg_x + valence_diff + arousal_diff + (1 | RECORDING_SESSION_LABEL) + (1 | story), data=all_data_continuous)
+model_highlight_proportion_el = lmer(proportion_x ~ 1 +  character_count_norm + word_freq_avg + positive + negative + concreteness  + valence_avg_x + arousal_avg_x + valence_diff + arousal_diff + surprise + disgust + (1 | RECORDING_SESSION_LABEL) , data=el_story)
+model_highlight_proportion_sm = lmer(proportion_x ~ 1 +  character_count_norm + word_freq_avg + positive + negative + concreteness  + valence_avg_x + arousal_avg_x + valence_diff + arousal_diff + surprise + disgust + (1 | RECORDING_SESSION_LABEL) , data=sm_story)
+model_highlight_proportion = lmer(proportion_x ~ 1 + character_count_norm + word_freq_avg + positive + negative + concreteness  + valence_avg_x + arousal_avg_x + valence_diff + arousal_diff + surprise + disgust + (1 | RECORDING_SESSION_LABEL) + (1 | story), data=all_data_continuous)
 
 
-model_dwell_time = lmer(norm_dt ~ 1   +  word_freq_avg  + positive + negative + concreteness + valence_avg_x + arousal_avg_x +valence_diff  + arousal_diff + proportion_x + (1 | RECORDING_SESSION_LABEL) + (1 | story), data=all_data_continuous)
-model_dwell_time_el = lmer(norm_dt ~ 1   +  word_freq_avg + positive   + negative + concreteness + valence_avg_x + arousal_avg_x +valence_diff  + arousal_diff + proportion_x + (1 | RECORDING_SESSION_LABEL) , data=el_story)
-model_dwell_time_sm = lmer(norm_dt ~ 1   +  word_freq_avg  +positive + negative + concreteness + valence_avg_x + arousal_avg_x +valence_diff  + arousal_diff + proportion_x + (1 | RECORDING_SESSION_LABEL) , data=sm_story)
+model_dwell_time = lmer(norm_dt ~ 1  + word_freq_avg  + positive + negative + concreteness + valence_avg_x + arousal_avg_x +valence_diff  + arousal_diff + surprise + (1 | RECORDING_SESSION_LABEL) + (1 | story), data=all_data_continuous)
+model_dwell_time_el = lmer(norm_dt ~ 1 + word_freq_avg  + positive + negative + concreteness + valence_avg_x + arousal_avg_x +valence_diff  + arousal_diff + surprise + joy + (1 | RECORDING_SESSION_LABEL) , data=el_story)
+model_dwell_time_sm = lmer(norm_dt ~ 1  +  + word_freq_avg  + positive + negative + concreteness + valence_avg_x + arousal_avg_x +valence_diff  + arousal_diff + surprise + joy + (1 | RECORDING_SESSION_LABEL) , data=sm_story)
 ```
 
 ## Predict continuous highlight annotation
@@ -172,10 +179,18 @@ coef(model_dwell_time_sm)
 
 ```{r}
 library(ggplot2)
-ggplot(all_data_continuous ,aes(x=valence_diff, y=proportion_x, color=story)) + geom_point(alpha = .5) + facet_wrap(~RECORDING_SESSION_LABEL, nrow = 4, ncol = 6)
+ggplot(sm_story ,aes(x=norm_dt, y=concreteness, color=story)) + geom_point(alpha = .5) + facet_wrap(~RECORDING_SESSION_LABEL, nrow = 4, ncol = 6)
+engaged_plot <- ggplot(el_story[el_story$engagement_score >=3.0,] ,aes(x=sentence, y=norm_dt_smooth, color=RECORDING_SESSION_LABEL)) + geom_line(alpha = .5) + labs(x='Sentence', y='Normalized dwell time', title='Dwell time for highly engaged readers of Expensive Lessons')
+ggsave('engaged_dt_el.png', plot=engaged_plot)
+ggplot(sm_story[sm_story$engagement_score >=3.0,] ,aes(x=sentence, y=norm_dt_smooth, color=RECORDING_SESSION_LABEL)) + geom_line(alpha = .5) + labs(x='Sentence', y='Normalized dwell time', title='Dwell time for highly engaged readers of Schoolmistress')
+
+ggplot(el_story[el_story$engagement_score <=1.3,] ,aes(x=sentence, y=norm_dt_smooth, color=RECORDING_SESSION_LABEL)) + geom_line(alpha = .5) + labs(x='Sentence', y='Normalized dwell time', title='Dwell time for unengaged readers of Expensive Lessons')
+ggplot(sm_story[sm_story$engagement_score <=1.3,] ,aes(x=sentence, y=norm_dt_smooth, color=RECORDING_SESSION_LABEL)) + geom_line(alpha = .5) + labs(x='Sentence', y='Normalized dwell time', title='Dwell time for unengaged readers of Schoolmistress')
+
+ggplot(el_story[el_story$RECORDING_SESSION_LABEL == 'id19' | el_story$RECORDING_SESSION_LABEL == 'id24',] ,aes(x=sentence, y=norm_dt_smooth, color=RECORDING_SESSION_LABEL)) + geom_line(alpha = .5) + labs(x='Sentence', y='Normalized dwell time', title='Dwell time for engaged and unengaged readers of EL')
 engagement_highlights_el <- engagement_highlights[engagement_highlights$story == 'EL',]
 engagement_highlights_sm <- engagement_highlights[engagement_highlights$story == 'SM',]
-ggplot(all_data_continuous ,aes(x=valence_diff, y=norm_dt, color=story))+ geom_point(alpha = .5)   + facet_wrap(~RECORDING_SESSION_LABEL, nrow = 4, ncol = 6)
+ggplot(all_data_continuous[all_data_continuous$story == 'SM',] ,aes(x=sentence, y=norm_dt_smooth, color=story))+ geom_line(alpha = .5)   + facet_wrap(~RECORDING_SESSION_LABEL, nrow = 4, ncol = 6)
 ggplot(all_data_continuous ,aes(x=norm_dt, y=proportion_x, color=story))+ geom_point(alpha = .5)   + facet_wrap(~RECORDING_SESSION_LABEL, nrow = 4, ncol = 6)
 ggplot(engagement_highlights_el, aes(x=engagement_score, y=percentage_highlighted, color=story)) + geom_point() +
   geom_smooth(method=lm,  linetype="dashed",
@@ -188,9 +203,7 @@ ggplot(engagement_highlights, aes(x=engagement_score, y=percentage_highlighted, 
              color="darkred", fill="blue")
 
 ```
-```{r}
-engaged_readers <- combined_all_smoothed[combined_all_smoothed$engagement_score >= 2.00,]
-```
+
 
 ```{r}
 #filtered_df <- subset(all_data_continuous, all_data_continuous$category > 0)
@@ -275,7 +288,7 @@ htmlwidgets::saveWidget(p, "highlights_el.html")
 ```
 
 ```{r}
-p <- plot_ly(data=el_story, x = ~sentence, y = ~present,  type = 'bar', name = 'present', hovertemplate=~paste(gsub('(.{1,45})(\\s|$)', '\\1\n', text), "Count:", present)) %>%
+p <- plot_ly(data=el_all_smoothed, x = ~sentence, y = ~present,  type = 'bar', name = 'present', hovertemplate=~paste(gsub('(.{1,45})(\\s|$)', '\\1\n', text), "Count:", present)) %>%
     add_trace(y = ~confused, name = 'confused', hovertemplate=~paste(gsub('(.{1,45})(\\s|$)', '\\1\n', text), "Count:", confused)) %>%
     add_trace(y = ~curious, name = 'curious', hovertemplate=~paste(gsub('(.{1,45})(\\s|$)', '\\1\n', text), "Count:", curious)) %>%
     add_trace(y = ~connected, name = 'connected', hovertemplate=~paste(gsub('(.{1,45})(\\s|$)', '\\1\n', text), "Count:", connected)) %>%

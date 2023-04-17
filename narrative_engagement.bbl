@@ -7,18 +7,6 @@
 \newblock \url{https://indicodata.ai/blog/plotlines/}.
 \newblock Accessed: 2022-12-21.
 
-\bibitem[{wil(2015)}]{willems_2015}
- 2015.
-\newblock \href {https://doi.org/10.1017/CBO9781107323667} {\emph{Cognitive
-  Neuroscience of Natural Language Use}}.
-\newblock Cambridge University Press.
-
-\bibitem[{1 et~al.(2014)1, Warriner, and Kuperman}]{brysbaert2014}
-Marc~Brysbaert 1, Amy~Beth Warriner, and Victor Kuperman. 2014.
-\newblock \href {https://doi.org/10.3758/s13428-013-0403-5} {Concreteness
-  ratings for 40 thousand generally known english word lemmas}.
-\newblock \emph{Behavior Research Methods}, 46(3):904--911.
-
 \bibitem[{Andrade and Andersen(2020)}]{andrade2020}
 Stefan~Bastholm Andrade and Ditte Andersen. 2020.
 \newblock \href {https://doi.org/10.1080/13645579.2020.1723205} {Digital story
@@ -38,26 +26,22 @@ Ryan Boyd, Ashwini Ashokkumar, Sarah Seraj, and James Pennebaker. 2022.
 \newblock \href {https://doi.org/10.13140/RG.2.2.23890.43205} {The development
   and psychometric properties of liwc-22}.
 
-\bibitem[{Boyd et~al.(2020)Boyd, Blackburn, and
-  Pennebaker}]{boyd_blackburn_pennebaker_2020}
-Ryan~L. Boyd, Kate~G. Blackburn, and James~W. Pennebaker. 2020.
-\newblock \href {https://doi.org/10.1126/sciadv.aba2196} {The narrative arc:
-  Revealing core narrative structures through text analysis}.
-\newblock \emph{Science Advances}, 6(32).
+\bibitem[{Brysbaert(2015)}]{Brysbaert_2015}
+Marc Brysbaert. 2015.
+\newblock \href {https://osf.io/djpqz/} {Subtlex us word frequency database}.
+
+\bibitem[{Brysbaert et~al.(2014)Brysbaert, Warriner, and
+  Kuperman}]{brysbaert2014}
+Marc Brysbaert, Amy~Beth Warriner, and Victor Kuperman. 2014.
+\newblock \href {https://doi.org/10.3758/s13428-013-0403-5} {Concreteness
+  ratings for 40 thousand generally known english word lemmas}.
+\newblock \emph{Behavior Research Methods}, 46(3):904--911.
 
 \bibitem[{Busselle and Bilandzic(2009)}]{busselle2009}
 Rick Busselle and Helena Bilandzic. 2009.
 \newblock \href {https://doi.org/10.1080/15213260903287259} {Measuring
   narrative engagement}.
 \newblock \emph{Media Psychology}, 12(4):321--347.
-
-\bibitem[{Chung-fat yim et~al.(2019)Chung-fat yim, Cilento, Piotrowska, and
-  Mar}]{chung-fat-yim_cilento_piotrowska_mar_2019}
-Ashley Chung-fat yim, Elena Cilento, Ewelina Piotrowska, and Raymond~A. Mar.
-  2019.
-\newblock \href {https://doi.org/10.1017/langcog.2019.15} {Are stories just as
-  transporting when not in your native tongue?}
-\newblock \emph{Language and Cognition}, 11(2):285–309.
 
 \bibitem[{Consoli(2018)}]{Consoli2018}
 Gianluca Consoli. 2018.
@@ -80,6 +64,12 @@ Mariana Ferreira and Hugo Gon{\c{c}}alo~Oliveira. 2018.
 \newblock In \emph{Proceedings of the 3rd Workshop on Computational Creativity
   in Natural Language Generation ({CC}-{NLG} 2018)}, pages 5--10, Tilburg, the
   Netherlands. Association for Computational Linguistics.
+
+\bibitem[{Gerrig(1993)}]{gerrig_1993}
+Richard~J. Gerrig. 1993.
+\newblock \href {http://www.jstor.org/stable/j.ctt1dr37cb} {\emph{Experiencing
+  Narrative Worlds: On the Psychological Activities of Reading}}.
+\newblock Yale University Press.
 
 \bibitem[{Green et~al.(2006)Green, Brock, and
   Kaufman}]{green_brock_kaufman_2006}
@@ -109,13 +99,6 @@ Arthur~M. Jacobs and Roel~M. Willems. 2018.
   Neurocognitive correlates of engagement in literature}.
 \newblock \emph{Review of General Psychology}, 22(2):147--160.
 
-\bibitem[{Kasunic and Kaufman(2018)}]{kasunic_kaufman_2018}
-Anna Kasunic and Geoff Kaufman. 2018.
-\newblock \href {https://doi.org/10.18653/v1/w18-1501} {Learning to listen:
-  Critically considering the role of ai in human storytelling and character
-  creation}.
-\newblock \emph{Proceedings of the First Workshop on Storytelling}.
-
 \bibitem[{Kunze et~al.(2015)Kunze, Sanchez, Dingler, Augereau, Kise, Inami, and
   Tsutomu}]{kunze2015}
 Kai Kunze, Susana Sanchez, Tilman Dingler, Olivier Augereau, Koichi Kise,
@@ -131,6 +114,15 @@ Anežka Kuzmičová. 2014.
 \newblock \href {http://www.jstor.org/stable/10.5325/style.48.3.275} {Literary
   narrative and mental imagery: A view from embodied cognition}.
 \newblock \emph{Style}, 48(3):275--293.
+
+\bibitem[{Magyari et~al.(2020)Magyari, Mangen, Kuzmičová, Jacobs, and
+  Lüdtke}]{Magyari2020}
+Lilla Magyari, Anne Mangen, Anežka Kuzmičová, Arthur~M. Jacobs, and Jana
+  Lüdtke. 2020.
+\newblock \href {https://doi.org/https://doi.org/10.16910/jemr.13.3.3} {Eye
+  movements and mental imagery during reading of literary texts with different
+  narrative styles}.
+\newblock \emph{Journal of Eye Movement Research}, 13(3):10.16910/jemr.13.3.3.
 
 \bibitem[{Mak and Willems(2019)}]{mak2019}
 Marloes Mak and Roel~M. Willems. 2019.
@@ -152,19 +144,23 @@ Geoff F.~Kaufman Melanie C.~Green, Timothy C.~Brock. 2004.
   worlds}.
 \newblock \emph{Communication Theory}, 14(4):311--327.
 
-\bibitem[{Rashkin et~al.(2016)Rashkin, Singh, and
-  Choi}]{rashkin-etal-2016-connotation}
-Hannah Rashkin, Sameer Singh, and Yejin Choi. 2016.
-\newblock \href {https://doi.org/10.18653/v1/P16-1030} {Connotation frames: A
-  data-driven investigation}.
-\newblock In \emph{Proceedings of the 54th Annual Meeting of the Association
-  for Computational Linguistics (Volume 1: Long Papers)}, pages 311--321,
-  Berlin, Germany. Association for Computational Linguistics.
-
 \bibitem[{Stockwell(2002)}]{stockwell2002cognitive}
 P.~Stockwell. 2002.
 \newblock \href {https://books.google.com/books?id=3-vBCWC\_hOcC}
   {\emph{Cognitive Poetics: An Introduction}}.
 \newblock Routledge.
+
+\bibitem[{Warriner et~al.(2013)Warriner, Kuperman, and
+  Brysbaert}]{valence_arousal_dominance_2013}
+Amy~Beth Warriner, Victor Kuperman, and Marc Brysbaert. 2013.
+\newblock \href {https://doi.org/10.3758/s13428-012-0314-x} {Norms of valence,
+  arousal, and dominance for 13,915 english lemmas}.
+\newblock \emph{Behavior Research Methods}, 45(4):1191--1207.
+
+\bibitem[{Willems(2015)}]{willems_2015}
+Roel~M. Willems. 2015.
+\newblock \href {https://doi.org/10.1017/CBO9781107323667} {\emph{Cognitive
+  Neuroscience of Natural Language Use}}.
+\newblock Cambridge University Press.
 
 \end{thebibliography}
