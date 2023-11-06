@@ -1,0 +1,48 @@
+﻿story,"SM: Schoolmistress, EL: Expensive Lessons"
+sentence,sentence index
+RECORDING_SESSION_LABEL,Participant ID
+category,Highlight category
+proportion_highlighted,proportion of sentence highlighted
+anger,emotion score for anger
+disgust,emotion score for disgust
+fear,emotion score for fear
+joy,emotion score for joy
+neutral,emotion score for neutral
+sadness,emotion score for sadness
+surprise,emotion score for surprise
+negative,negative sentiment score
+neutral_sentiment,neutral sentiment score
+positive,positive sentiment score
+word_length_mean,mean word length
+concreteness,mean concreteness score
+valence_mean,mean valence score
+valence_max,max valence
+valence_min,min valence
+arousal_mean,mean arousal score
+arousal_max,max arousal
+arousal_min,min arousal
+word_freq_mean,mean word frequency score
+word_count,word count
+text,setence text
+IA_DWELL_TIME_SMOOTHED,"reader dwell time duration, with 0 dwell times replaced with mean of 5 closest neighbors"
+IA_REGRESSION_PATH_DURATION_SMOOTHED,"regression duration, with 0 regression times replaced with mean of 5 closest neighbors"
+IA_AVERAGE_FIX_PUPIL_SIZE_SMOOTHED,"pupil size, with 0 pupil size replaced with mean of 5 closest neighbors"
+IA_REGRESSION_IN_COUNT_SMOOTHED,"count of regression to sentence, with null values replaced with mean of 5 closest neighbors"
+IA_REGRESSION_OUT_FULL_COUNT_SMOOTHED,"count of regression out, with null values replaced with mean of 5 closest neighbors"
+engagement_score,overall engagement score for the story
+word_count_norm,word count normalized using min-max normalization
+character_count,number of characters in sentence
+character_count_norm,character count normalized using min-max normalization
+normalized_dt,dwell time normalized using min-max normalization
+norm_dt_smooth,"normalized dwell time, smoothed using fast fourier transformation for ease of visualization"
+norm_reg_path,normalized regression path duration
+highlighted,binary indicator of whether the sentence is highlighted
+valence_diff,difference between valence min and max
+arousal_diff,difference between arousal min and max
+word_freq_norm,mean word frequency normalized
+no_highlight,no part of the sentence was highlighted
+present,largest proportion was marked with a present highlight
+confused,largest proportion was marked with a confused highlight
+curious,largest proportion was marked with a curious highlight
+connected,largest proportion was marked with a connected highlight
+other,largest proportion was marked with an other highlight
