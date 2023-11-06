@@ -1,6 +1,9 @@
 # narrative_engagement
 umbrella project for analyzing readers' engagement in stories, including the eye tracking and highlighting annotations, and correlating them with discourse features
 
+
+[Dataset](reader_engagement.csv) and [column descriptions](dictionary.csv)
+
 This repo has the following repos as subtrees:
 
 - [Discourse feature extraction](https://github.com/minnesotanlp/emotional_story_arcs)
